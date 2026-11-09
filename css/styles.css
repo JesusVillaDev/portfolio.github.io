@@ -1,0 +1,1862 @@
+/* ==========================================================================
+   PORTFOLIO JESÚS GUTIÉRREZ VILLA - SISTEMA DE DISEÑO EDITORIAL
+   Paleta Oficial: Navy #083A4F • Gold #A58D66 • Aqua #C0D5D6 • Teal #407E8C • Sand #E5E1DD
+   Jerarquía Ponderada: 60% Navy • 25% Sand • 10% Teal/Aqua • 5% Gold
+   Tipografías Oficiales: Barcelona (Butler) & Roma (Roboto Slab)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. FUENTES LOCALES: BARCELONA (BUTLER)
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Butler';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/ButlerRegular.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Butler';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/ButlerBold.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Butler';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../fonts/ButlerExtraBold.otf') format('opentype');
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES DE DISEÑO & PALETA OFICIAL EN :ROOT
+   -------------------------------------------------------------------------- */
+:root {
+  /* ========================================================================
+     PALETA DE COLOR OFICIAL (IMAGEN 1)
+     Navy #083A4F • Gold #A58D66 • Aqua #C0D5D6 • Teal #407E8C • Sand #E5E1DD
+     ======================================================================== */
+  /* 60% BASE DOMINANTE: NAVY */
+  --color-navy: #083A4F;              /* Fondo oficial primario */
+  --color-navy-deep: #052432;         /* Sombra profunda y fondos contrastados */
+  --color-navy-surface: #0a445c;      /* Superficie de tarjetas */
+  --color-navy-hover: #0d516d;        /* Hover en tarjetas */
+  --color-navy-elevated: #115f80;     /* Elementos elevados / modales */
+  --color-navy-glass: rgba(8, 58, 79, 0.75);
+
+  /* 25% CONTENIDO & LECTURA: SAND */
+  --color-sand: #E5E1DD;              /* Texto principal, titulares y contraste */
+  --color-sand-soft: #d3cec8;         /* Texto secundario y párrafos */
+  --color-sand-muted: #b0aba3;        /* Metadatos y etiquetas atenuadas */
+
+  /* 10% INTERMEDIO & ARQUITECTURA: TEAL & AQUA */
+  --color-teal: #407E8C;              /* Bordes, divisores y badges estructurados */
+  --color-teal-light: #5296a6;
+  --color-teal-subtle: rgba(64, 126, 140, 0.22);
+  --color-teal-border: rgba(64, 126, 140, 0.45);
+
+  --color-aqua: #C0D5D6;              /* Acentos luminosos, tags y micro-interacciones */
+  --color-aqua-subtle: rgba(192, 213, 214, 0.14);
+  --color-aqua-glow: 0 0 20px rgba(192, 213, 214, 0.25);
+
+  /* 5% MÁXIMA JERARQUÍA / ACCIÓN / FOCAL: GOLD */
+  --color-gold: #A58D66;              /* Botón principal, active dock y llamadas clave */
+  --color-gold-hover: #b89f78;
+  --color-gold-subtle: rgba(165, 141, 102, 0.18);
+  --color-gold-glow: 0 4px 20px rgba(165, 141, 102, 0.35);
+
+  /* Mapeo Semántico */
+  --bg-canvas: var(--color-navy);
+  --bg-surface: var(--color-navy-surface);
+  --bg-surface-card: var(--color-navy-surface);
+  --bg-surface-hover: var(--color-navy-hover);
+  --bg-surface-elevated: var(--color-navy-elevated);
+
+  --text-white: var(--color-sand);
+  --text-main: var(--color-sand-soft);
+  --text-muted: var(--color-sand-muted);
+
+  --border-subtle: var(--color-teal-border);
+  --border-medium: rgba(192, 213, 214, 0.3);
+  --border-active: var(--color-gold);
+
+  --shadow-card: 0 14px 35px -10px rgba(5, 36, 50, 0.7);
+
+  /* ========================================================================
+     TIPOGRAFÍAS OFICIALES (BARCELONA = BUTLER, ROMA = ROBOTO SLAB)
+     ======================================================================== */
+  --font-barcelona: 'Butler', Georgia, 'Times New Roman', serif;
+  --font-rome: 'Roboto Slab', -apple-system, BlinkMacSystemFont, serif;
+  --font-sans: 'Roboto Slab', serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Transiciones */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-fast: 0.15s ease;
+  --trans-normal: 0.28s var(--ease-spring);
+  --trans-slow: 0.45s var(--ease-spring);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & ESTILOS GLOBALES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-rome);
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.65;
+  background-color: var(--color-navy);
+  background-image: 
+    radial-gradient(ellipse at 15% 10%, rgba(64, 126, 140, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 85%, rgba(5, 36, 50, 0.5) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-barcelona);
+  color: var(--color-sand);
+  letter-spacing: -0.01em;
+}
+
+/* Justificación selectiva de textos de lectura continua */
+.card-desc,
+.evaluator-text,
+.exp-bullet-text,
+.edu-desc,
+.philosophy-desc {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all var(--trans-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all var(--trans-fast);
+}
+
+/* Scrollbar principal de la página */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-navy-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-teal);
+  border-radius: 9999px;
+  border: 2px solid var(--color-navy-deep);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   3. MAQUETACIÓN & ESPACIADOS COMPACTOS
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section-wrapper {
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .section-wrapper {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+}
+
+.section-header {
+  margin-bottom: 1.75rem;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-aqua);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-sand);
+  margin-bottom: 0.75rem;
+}
+
+.section-desc {
+  font-family: var(--font-rome);
+  font-size: 1rem;
+  color: var(--color-sand-soft);
+  line-height: 1.6;
+  max-width: 44rem;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.75rem;
+  }
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 860px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. EFECTOS AMBIENTALES
+   -------------------------------------------------------------------------- */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.ambient-light-1 {
+  position: absolute;
+  top: -120px;
+  left: 20%;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(165, 141, 102, 0.08) 0%, transparent 70%);
+  filter: blur(140px);
+}
+
+.ambient-light-2 {
+  position: absolute;
+  top: 55%;
+  right: -50px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(64, 126, 140, 0.12) 0%, transparent 70%);
+  filter: blur(150px);
+}
+
+/* --------------------------------------------------------------------------
+   5. NAVBAR FLOTANTE, TRANSPARENTE, CENTRADO Y CON INDICADOR DESLIZANTE
+   -------------------------------------------------------------------------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0.85rem 0;
+  transition: all var(--trans-normal);
+}
+
+.nav-container-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Menú Central Flotante con Slider (Sin bordes, fondo transparente) */
+.nav-menu {
+  display: none;
+  position: relative;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0.3rem 0.5rem;
+  border-radius: 9999px;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 768px) {
+  .nav-menu {
+    display: inline-flex;
+  }
+}
+
+/* Pastilla Deslizante Fluida (Selected to New Selected) */
+.nav-indicator-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--color-gold);
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(165, 141, 102, 0.4);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1),
+              width 0.32s cubic-bezier(0.25, 1, 0.5, 1),
+              height 0.32s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.2s ease;
+}
+
+.nav-link {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-rome);
+  padding: 0.5rem 1.15rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-sand);
+  transition: color 0.22s ease, font-weight 0.22s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link.active {
+  color: #052432;
+  font-weight: 700;
+}
+
+/* Botón Mobile */
+.mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: rgba(5, 36, 50, 0.7);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-sand);
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .mobile-toggle {
+    display: none;
+  }
+}
+
+.mobile-drawer {
+  display: none;
+  background: var(--color-navy-deep);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  margin: 0.5rem 1rem 0 1rem;
+  padding: 0.85rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.mobile-drawer.open {
+  display: block;
+}
+
+.mobile-drawer .nav-link {
+  display: block;
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   6. BOTONES (JERARQUÍA PONDERADA: GOLD PARA ACCIÓN PRINCIPAL)
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--font-rome);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.6rem 1.35rem;
+  border-radius: 10px;
+  min-height: 40px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--trans-normal);
+}
+
+/* 5% Gold: Botón primario de máxima jerarquía */
+.btn-primary {
+  background: var(--color-gold);
+  color: var(--color-navy-deep);
+  border: 1px solid var(--color-gold);
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(165, 141, 102, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--color-gold-hover);
+  border-color: var(--color-gold-hover);
+  color: #03141c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(165, 141, 102, 0.45);
+}
+
+/* 10% Teal/Aqua: Botón secundario */
+.btn-secondary {
+  background: rgba(64, 126, 140, 0.22);
+  color: var(--color-sand);
+  border: 1px solid var(--color-teal);
+}
+
+.btn-secondary:hover {
+  background: rgba(64, 126, 140, 0.4);
+  border-color: var(--color-aqua);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-sand);
+  border: 1px solid var(--color-teal-border);
+}
+
+.btn-outline:hover {
+  background: rgba(192, 213, 214, 0.1);
+  border-color: var(--color-aqua);
+  color: #ffffff;
+}
+
+.btn-sm {
+  padding: 0.45rem 1rem;
+  font-size: 0.825rem;
+  min-height: 36px;
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO SECTION & RETRATO PERSONAL YOFONDO
+   -------------------------------------------------------------------------- */
+.hero-section {
+  padding-top: 1.5rem;
+  padding-bottom: 2.75rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    padding-top: 2rem;
+    padding-bottom: 3.25rem;
+  }
+}
+
+/* Distribución equilibrada en 2 Columnas */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 3.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-grid {
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 4.5rem;
+  }
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-title {
+  font-family: var(--font-barcelona);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-sand);
+  margin-bottom: 1.15rem;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+.hero-highlight {
+  color: var(--color-gold);
+}
+
+.hero-subtitle {
+  font-family: var(--font-rome);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-sand-soft);
+  margin-bottom: 0;
+}
+
+.hero-subtitle strong {
+  color: var(--color-sand);
+  font-weight: 700;
+}
+
+/* Retrato YoFondo en el espacio libre */
+.hero-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-portrait-card {
+  position: relative;
+  width: 100%;
+  max-width: 310px;
+  padding: 5px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(165, 141, 102, 0.45) 0%, rgba(64, 126, 140, 0.3) 50%, rgba(8, 58, 79, 0.8) 100%);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 35px rgba(64, 126, 140, 0.2);
+  transition: transform var(--trans-normal), box-shadow var(--trans-normal);
+}
+
+@media (min-width: 960px) {
+  .hero-portrait-card {
+    max-width: 350px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-portrait-card {
+    max-width: 380px;
+  }
+}
+
+.hero-portrait-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 75px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(165, 141, 102, 0.35);
+}
+
+.hero-portrait-glow {
+  position: absolute;
+  inset: -12px;
+  border-radius: 30px;
+  background: radial-gradient(circle, rgba(165, 141, 102, 0.25) 0%, rgba(64, 126, 140, 0.15) 50%, transparent 75%);
+  filter: blur(20px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.75;
+  transition: opacity var(--trans-normal);
+}
+
+.hero-portrait-card:hover .hero-portrait-glow {
+  opacity: 1;
+}
+
+.hero-portrait-frame {
+  position: relative;
+  border-radius: 17px;
+  overflow: hidden;
+  background: #052432;
+  aspect-ratio: 3 / 4;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+.hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform var(--trans-slow);
+}
+
+.hero-portrait-card:hover .hero-portrait-img {
+  transform: scale(1.03);
+}
+
+/* Badge flotante inferior con indicador activo */
+.hero-portrait-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(5, 36, 50, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(64, 126, 140, 0.55);
+  padding: 0.38rem 1rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--color-sand);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  transition: border-color var(--trans-fast);
+}
+
+.hero-portrait-card:hover .hero-portrait-badge {
+  border-color: var(--color-gold);
+}
+
+.hero-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   STACK TECNOLÓGICO CON ICONOS CARGADOS (SIN SVGS EN LÍNEA)
+   ========================================================================== */
+.hero-stack-showcase {
+  background: rgba(5, 36, 50, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 18px;
+  padding: 1.75rem 1.25rem;
+  box-shadow: var(--shadow-card);
+  margin-top: 0.5rem;
+}
+
+.hero-stack-title {
+  text-align: center;
+  font-family: var(--font-barcelona);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-sand);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.hero-stack-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .hero-stack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .hero-stack-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.hero-stack-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+@media (min-width: 960px) {
+  .hero-stack-col:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: rgba(64, 126, 140, 0.3);
+  }
+}
+
+.hero-stack-col-title {
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-aqua);
+  margin-bottom: 1rem;
+}
+
+.hero-stack-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, 54px);
+  gap: 0.75rem;
+}
+
+.tech-tile {
+  width: 54px;
+  height: 54px;
+  border-radius: 13px;
+  background: rgba(8, 58, 79, 0.6);
+  border: 1px solid var(--color-teal-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all var(--trans-normal);
+  cursor: pointer;
+  overflow: visible;
+}
+
+/* Iconos Vectoriales SVG cargados e Iconos FontAwesome/Devicon */
+.tech-tile img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  transition: transform var(--trans-fast);
+}
+
+.tech-tile i {
+  font-size: 1.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--trans-fast);
+}
+
+.tech-tile:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: var(--color-gold);
+  box-shadow: 0 8px 20px rgba(5, 36, 50, 0.5), var(--color-gold-glow);
+  background: rgba(10, 68, 92, 0.85);
+  z-index: 20;
+}
+
+.tech-tile:hover img,
+.tech-tile:hover i {
+  transform: scale(1.12);
+}
+
+/* Tooltip elegante único con z-index alto sin interferencia nativa */
+.tech-tile::after {
+  content: attr(data-tech-name);
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #052432;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-teal);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 100;
+}
+
+.tech-tile:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   8. PROYECTOS PRINCIPALES: IMAGEN ARRIBA Y CONTENIDO DIVIDIDO EN 2 (HORIZ.)
+   -------------------------------------------------------------------------- */
+.featured-project-card {
+  background: var(--color-navy-surface);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 2rem;
+  transition: all var(--trans-normal);
+}
+
+.featured-project-card:hover {
+  border-color: var(--color-gold);
+}
+
+/* Imagen Arriba a sangre completa */
+.featured-project-media {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  background: var(--color-navy-deep);
+}
+
+@media (min-width: 768px) {
+  .featured-project-media {
+    height: 360px;
+  }
+}
+
+.featured-project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform var(--trans-slow);
+}
+
+.featured-project-card:hover .featured-project-media img {
+  transform: scale(1.02);
+}
+
+/* Contenido Abajo dividido en 2 columnas horizontales */
+.featured-project-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  padding: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .featured-project-body {
+    grid-template-columns: 1.15fr 0.85fr;
+    padding: 2.25rem;
+    gap: 2.25rem;
+  }
+}
+
+/* Lado Izquierdo: Etiqueta, Título y Descripción */
+.featured-col-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Lado Derecho: Impacto, Tags y Botones */
+.featured-col-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Badges de Categoría */
+.badge-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  width: fit-content;
+}
+
+.badge-label.production {
+  background: rgba(165, 141, 102, 0.2);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+}
+
+.badge-label.data {
+  background: var(--color-aqua-subtle);
+  color: var(--color-aqua);
+  border: 1px solid var(--color-teal);
+}
+
+.badge-label.ai {
+  background: rgba(167, 139, 250, 0.15);
+  color: #ddd6fe;
+  border: 1px solid rgba(167, 139, 250, 0.35);
+}
+
+.badge-label.tool {
+  background: rgba(64, 126, 140, 0.2);
+  color: var(--color-sand);
+  border: 1px solid var(--color-teal);
+}
+
+.card-title {
+  font-family: var(--font-barcelona);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-sand);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.card-desc {
+  font-family: var(--font-rome);
+  font-size: 0.95rem;
+  color: var(--color-sand-soft);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+/* Bloque evaluador / Impacto */
+.evaluator-box {
+  background: rgba(5, 36, 50, 0.65);
+  border-left: 3px solid var(--color-gold);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.evaluator-label {
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.evaluator-text {
+  font-family: var(--font-rome);
+  font-size: 0.825rem;
+  color: var(--color-sand-soft);
+  line-height: 1.5;
+}
+
+/* Tags de Stack */
+.tech-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+}
+
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-aqua);
+  background: rgba(64, 126, 140, 0.15);
+  border: 1px solid rgba(64, 126, 140, 0.35);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Tarjetas Secundarias */
+.project-card, .tool-card {
+  background: var(--color-navy-surface);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all var(--trans-normal);
+}
+
+.project-card:hover, .tool-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-aqua);
+  box-shadow: var(--shadow-card);
+}
+
+.project-card-media, .tool-media {
+  background: var(--color-navy-deep);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.project-image-box, .tool-image-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+}
+
+.project-image-box img, .tool-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform var(--trans-slow);
+}
+
+.project-card:hover .project-image-box img,
+.tool-card:hover .tool-image-box img {
+  transform: scale(1.04);
+}
+
+.project-card-body, .tool-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+/* El bloque de contenido superior toma todo el espacio disponible */
+.project-card-body > div:first-child,
+.tool-body > div:first-child {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botones fijados estrictamente al fondo de la tarjeta de forma simétrica */
+.project-card-body .card-actions,
+.tool-body .card-actions,
+.featured-col-meta .card-actions {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. APARTADO DEDICADO DE TECNOLOGÍAS (SIMETRÍA 4X4)
+   -------------------------------------------------------------------------- */
+.tech-category-card {
+  background: var(--color-navy-surface);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  transition: all var(--trans-normal);
+}
+
+.tech-category-card:hover {
+  border-color: var(--color-aqua);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.tech-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.tech-cat-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(64, 126, 140, 0.25);
+  color: var(--color-aqua);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-cat-title {
+  font-family: var(--font-barcelona);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-sand);
+}
+
+.tech-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tech-item {
+  padding: 0.7rem 0.85rem;
+  background: rgba(5, 36, 50, 0.5);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 8px;
+  transition: all var(--trans-fast);
+}
+
+.tech-item:hover {
+  background: rgba(5, 36, 50, 0.8);
+  border-color: var(--color-aqua);
+}
+
+.tech-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.tech-name {
+  font-family: var(--font-rome);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-sand);
+}
+
+.tech-level-badge {
+  font-family: var(--font-mono);
+  font-size: 0.675rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(165, 141, 102, 0.2);
+  color: var(--color-gold);
+  border: 1px solid rgba(165, 141, 102, 0.4);
+}
+
+.tech-item-desc {
+  font-family: var(--font-rome);
+  font-size: 0.8rem;
+  color: var(--color-sand-soft);
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   10. EXPERIENCIA & FILOSOFÍA TÉCNICA
+   -------------------------------------------------------------------------- */
+.experience-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 960px) {
+  .experience-layout {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.exp-main-card {
+  background: var(--color-navy-surface);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 18px;
+  padding: 2rem;
+}
+
+.exp-header {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.exp-role {
+  font-family: var(--font-barcelona);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-sand);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.exp-company {
+  font-family: var(--font-rome);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-aqua);
+  margin-bottom: 0.35rem;
+}
+
+.exp-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-sand-muted);
+}
+
+.exp-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.exp-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.exp-check-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(165, 141, 102, 0.2);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  font-size: 0.75rem;
+}
+
+.exp-bullet-text {
+  font-family: var(--font-rome);
+  font-size: 0.875rem;
+  color: var(--color-sand-soft);
+  line-height: 1.55;
+}
+
+.exp-bullet-text strong {
+  color: var(--color-sand);
+}
+
+.philosophy-card {
+  background: var(--color-navy-surface);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 18px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.philosophy-title {
+  font-family: var(--font-barcelona);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-sand);
+  margin-bottom: 1rem;
+}
+
+.philosophy-item {
+  background: rgba(5, 36, 50, 0.5);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 10px;
+  padding: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.philosophy-heading {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-bottom: 0.35rem;
+}
+
+.philosophy-desc {
+  font-family: var(--font-rome);
+  font-size: 0.825rem;
+  color: var(--color-sand-soft);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   11. FORMACIÓN & CERTIFICACIONES (CON CURSO WIZELINE GOOGLE DAY)
+   -------------------------------------------------------------------------- */
+.education-card {
+  background: var(--color-navy-surface);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.edu-status {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+
+.edu-status.active {
+  background: rgba(165, 141, 102, 0.2);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+}
+
+.edu-status.complete {
+  background: rgba(64, 126, 140, 0.2);
+  color: var(--color-aqua);
+  border: 1px solid var(--color-teal);
+}
+
+.edu-degree {
+  font-family: var(--font-barcelona);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-sand);
+  margin-bottom: 0.25rem;
+}
+
+.edu-institution {
+  font-family: var(--font-rome);
+  font-size: 0.9rem;
+  color: var(--color-sand-muted);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.edu-desc {
+  font-family: var(--font-rome);
+  font-size: 0.85rem;
+  color: var(--color-sand-soft);
+  line-height: 1.5;
+}
+
+.cert-item {
+  background: var(--color-navy-surface);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 12px;
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  transition: all var(--trans-fast);
+}
+
+.cert-item:hover {
+  transform: translateX(4px);
+  border-color: var(--color-aqua);
+}
+
+.cert-title {
+  font-family: var(--font-rome);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-sand);
+  margin-bottom: 0.2rem;
+}
+
+.cert-issuer {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-sand-muted);
+}
+
+.cert-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  background: rgba(64, 126, 140, 0.2);
+  color: var(--color-aqua);
+  border: 1px solid var(--color-teal);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   12. CONTACTO DIRECTO (CHIP INTERACTIVO NATURAL)
+   -------------------------------------------------------------------------- */
+.contact-card {
+  background: linear-gradient(145deg, #0a445c 0%, #052432 100%);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 640px) {
+  .contact-card {
+    padding: 3.25rem 2.5rem;
+  }
+}
+
+.contact-title {
+  font-family: var(--font-barcelona);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-sand);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+.contact-subtitle {
+  font-family: var(--font-rome);
+  font-size: 1rem;
+  color: var(--color-sand-soft);
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contact-interactive-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.email-interactive-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 12px;
+  background: rgba(5, 36, 50, 0.6);
+  border: 1px solid var(--color-teal);
+  font-family: var(--font-mono);
+  font-size: 0.925rem;
+  color: var(--color-sand);
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--trans-normal);
+}
+
+.email-interactive-chip:hover {
+  background: rgba(64, 126, 140, 0.25);
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--color-gold-glow);
+}
+
+.chip-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+}
+
+.chip-email {
+  font-weight: 600;
+}
+
+.chip-copy-hint {
+  display: flex;
+  align-items: center;
+  color: var(--color-aqua);
+}
+
+.chip-tooltip {
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--color-navy-deep);
+  color: var(--color-sand);
+  border: 1px solid var(--color-gold);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all var(--trans-fast);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.chip-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: var(--color-navy-deep) transparent transparent transparent;
+}
+
+.email-interactive-chip:hover .chip-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.email-interactive-chip.copied {
+  border-color: var(--color-gold);
+  background: rgba(165, 141, 102, 0.2);
+  color: var(--color-gold);
+}
+
+.email-interactive-chip.copied .chip-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  background: var(--color-navy-deep);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.direct-email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(64, 126, 140, 0.2);
+  border: 1px solid var(--color-teal);
+  font-family: var(--font-rome);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-sand);
+  transition: all var(--trans-normal);
+}
+
+.direct-email-link:hover {
+  background: rgba(64, 126, 140, 0.35);
+  border-color: var(--color-aqua);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   13. FOOTER CENTRADO CON ICONOS DE REDES SOCIALES
+   -------------------------------------------------------------------------- */
+.footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 2.5rem 0;
+  background: var(--color-navy-deep);
+  font-family: var(--font-rome);
+  text-align: center;
+}
+
+.footer-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.footer-social-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.15rem;
+}
+
+.social-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(8, 58, 79, 0.8);
+  border: 1px solid var(--color-teal-border);
+  color: var(--color-sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all var(--trans-normal);
+}
+
+.social-icon-btn:hover {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-navy-deep);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: var(--color-gold-glow);
+}
+
+.footer-name {
+  font-family: var(--font-barcelona);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-sand);
+}
+
+.footer-meta {
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  color: var(--color-sand-muted);
+}
+
+/* --------------------------------------------------------------------------
+   14. MODAL DE FICHA TÉCNICA CON SCROLLBAR ELEGANTE Y ULTRA-DELICADA
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(5, 36, 50, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--trans-normal);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-dialog {
+  background: var(--color-navy);
+  border: 1px solid var(--color-teal-border);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 780px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden; /* Recorta perfectamente las esquinas redondeadas sin fugas */
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85);
+  transform: scale(0.96) translateY(12px);
+  transition: transform var(--trans-normal);
+}
+
+.modal-overlay.active .modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(5, 36, 50, 0.8);
+  color: var(--color-sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  border: 1px solid var(--color-teal-border);
+  font-size: 1rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all var(--trans-fast);
+}
+
+.modal-close:hover {
+  color: #03141c;
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(88vh - 2px);
+  padding: 1.75rem;
+
+  /* Scrollbar refinada Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-teal) transparent;
+}
+
+@media (min-width: 640px) {
+  .modal-body {
+    padding: 2.25rem 2.5rem;
+  }
+}
+
+/* Scrollbar refinada Webkit sin flechas ni esquinas cuadradas */
+.modal-body::-webkit-scrollbar {
+  width: 7px;
+}
+
+.modal-body::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: transparent !important;
+  margin: 18px 0;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--color-teal);
+  border-radius: 9999px;
+  transition: background var(--trans-fast);
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   15. TOAST FEEDBACK
+   -------------------------------------------------------------------------- */
+.toast {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 70;
+  background: var(--color-navy-deep);
+  border: 1px solid var(--color-gold);
+  color: var(--color-sand);
+  padding: 0.85rem 1.25rem;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--trans-normal);
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   16. ANIMACIONES DE ENTRADA
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s var(--ease-spring), transform 0.55s var(--ease-spring);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
