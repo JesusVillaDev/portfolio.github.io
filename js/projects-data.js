@@ -8,188 +8,187 @@ const PROJECTS_DATA = [
   {
     id: "enfocakids",
     title: "EnfocaKids",
-    categoryLabel: "En Producción Real • Proyecto Propio",
+    categoryLabel: "En Producción • Proyecto Propio",
     badgeType: "production",
-    tagline: "Ecosistema interactivo de estimulación cognitiva y seguimiento del desarrollo infantil en 6 dimensiones.",
+    tagline: "Plataforma de estimulación cognitiva infantil en 6 dimensiones.",
     image: "images/enfocakids.png",
     liveUrl: "https://enfocakids.com",
     githubUrl: null,
     statusBadge: "En Producción • Escuela Primaria",
-    tags: ["JavaScript (ES6+)", "PHP 8", "MySQL Relacional", "PWA (Service Workers)", "PHPStan Nivel Estricto"],
+    tags: ["JavaScript (ES6+)", "PHP 8", "MySQL Relacional", "PWA (Service Workers)", "PHPStan"],
     highlights: [
-      { label: "Uso Real en Escuela", desc: "Adoptado y utilizado activamente por niñas y niños de primaria en sus actividades pedagógicas diarias." },
-      { label: "6 Dimensiones Cognitivas", desc: "Atención sostenida, velocidad de procesamiento, memoria de trabajo, visoespacial, funciones ejecutivas y control inhibitorio." },
-      { label: "Medición en Tiempo Real", desc: "Captura milimétrica de latencias y tiempos de respuesta en el navegador sin fricción lúdica." },
-      { label: "Calidad de Código", desc: "Análisis estático automatizado con PHPStan y arquitectura PWA offline con Service Workers." }
+      { label: "Uso en Aula", desc: "Utilizada a diario por alumnos y docentes en una escuela primaria." },
+      { label: "6 Dimensiones", desc: "Atención, velocidad de procesamiento, memoria de trabajo, visoespacial, funciones ejecutivas y control inhibitorio." },
+      { label: "Métricas en Tiempo Real", desc: "Registro de aciertos y latencias en milisegundos durante las actividades." },
+      { label: "Soporte Offline", desc: "Arquitectura PWA instalable con Service Workers y análisis estático con PHPStan." }
     ],
-    challenge: "Evaluar el desarrollo cognitivo infantil suele depender de pruebas clínicas invasivas o exámenes en papel que generan estrés en los niños y no registran variaciones temporales en milisegundos ni curvas de fatiga mental durante la actividad.",
-    solution: "Se concibió y desarrolló una Progressive Web App (PWA) de producción propia que combina dinámicas lúdicas basadas en neuropsicología con captura silenciosa de métricas. El sistema opera actualmente en conjunto con una escuela primaria, donde los alumnos interactúan a diario. Bajo el principio ético de 'Acompañamiento siempre, diagnóstico clínico nunca', el sistema mide tiempos de reacción y precisión para ofrecer a maestros y padres una visión objetiva de las fortalezas del niño sin frustración.",
+    challenge: "Las evaluaciones tradicionales suelen ser pruebas rígidas o en papel que generan presión en los niños y no registran tiempos de respuesta ni evolución diaria con precisión.",
+    solution: "Se desarrolló una PWA propia que integra ejercicios lúdicos con captura silenciosa de métricas. Funciona diariamente en una escuela primaria, permitiendo a docentes y familias seguir el avance sin interrumpir la experiencia del niño.",
     technicalFeatures: [
-      "Plataforma propia desplegada en producción real (enfocakids.com) con niños activos en entorno escolar primario.",
-      "Motor en Vanilla JavaScript que captura eventos de usuario, latencia de reacción y rachas de acierto sin alterar la experiencia lúdica.",
-      "Arquitectura Progressive Web App: registro de sw.js y manifest.webmanifest para funcionamiento offline y guardado en pantalla de inicio.",
-      "Backend en PHP tipado y analizado estáticamente mediante PHPStan (nivel estricto en phpstan.neon).",
-      "Panel de seguimiento para educadores y padres con expedientes históricos, gráficas de evolución y reportes estructurados."
+      "Plataforma activa en enfocakids.com con uso diario en entorno escolar.",
+      "Motor en Vanilla JavaScript para medir tiempos de reacción y rachas de acierto.",
+      "PWA con Service Workers (sw.js) y manifest.webmanifest para uso sin conexión.",
+      "Backend en PHP analizado estáticamente con PHPStan en nivel estricto.",
+      "Panel de seguimiento con historial y reportes por alumno."
     ],
-    evaluatorNotes: "Proyecto cumbre de ingeniería y producto propio: valida interacción con usuarios reales (niños y docentes), despliegue en producción estable, captura de métricas cuantitativas en tiempo real y arquitectura PWA resiliente."
+    evaluatorNotes: "Proyecto propio en producción real con usuarios activos, métricas en tiempo real y soporte offline."
   },
   {
     id: "mach-contadores",
     title: "MACH Contadores",
     categoryLabel: "Cliente Real • En Producción",
     badgeType: "production",
-    tagline: "Sistema integral de gestión de clientes, expedientes fiscales y cédulas de facturación para despacho contable.",
+    tagline: "Sistema web para gestión de clientes, expedientes fiscales y facturación.",
     image: "images/mach-contadores.png",
     liveUrl: null,
     githubUrl: null,
-    statusBadge: "En Producción Real • Cliente Comercial",
+    statusBadge: "En Producción • Cliente Comercial",
     tags: ["PHP 8", "MySQL Relacional", "Vanilla JavaScript", "CSS3 Modular", "Apache WAMP"],
     highlights: [
-      { label: "Base de Datos", desc: "9 tablas normalizadas con claves foráneas e integridad referencial estricta." },
-      { label: "Seguridad Integral", desc: "Autenticación RBAC, control de sesiones y verificación por correo con tokens numéricos." },
-      { label: "Rendimiento Liviano", desc: "Cero dependencias externas; carga instantánea en equipos de oficina estándar." }
+      { label: "Base de Datos", desc: "9 tablas normalizadas en MySQL con claves foráneas e integridad referencial." },
+      { label: "Acceso por Roles", desc: "Control de sesiones para administradores y clientes con verificación por correo." },
+      { label: "Carga Rápida", desc: "Frontend nativo sin librerías pesadas para equipos estándar de oficina." }
     ],
-    challenge: "El despacho contable operaba con expedientes físicos dispersos y hojas de cálculo desvinculadas, provocando retrasos en el seguimiento de obligaciones tributarias ante el SAT, riesgo de pérdida de historial y falta de trazabilidad en las modificaciones realizadas por el personal.",
-    solution: "Se diseñó y construyó un sistema web centralizado con arquitectura monolítica limpia en PHP y MySQL. Integra control de acceso basado en roles (Administradores y Clientes), verificación de correo por códigos numéricos temporales, módulo de cédula de facturación, panel de notificaciones en tiempo real y bitácora de historial de modificaciones para auditoría.",
+    challenge: "El despacho llevaba el control de expedientes y declaraciones en archivos dispersos y hojas de cálculo, dificultando el seguimiento de fechas límite y cambios.",
+    solution: "Se creó una aplicación web centralizada en PHP y MySQL que organiza expedientes de contribuyentes, cédulas de facturación, notificaciones y bitácora de movimientos.",
     technicalFeatures: [
-      "Esquema relacional en MySQL: tablas dedicadas a administradores, clientes, datos fiscales, sesiones activas, historial de cambios y notificaciones.",
-      "Backend modular en PHP: controladores independientes para autenticación, gestión de expedientes y API de notificaciones en formato JSON.",
-      "Frontend reactivo con Vanilla JS: formularios validados en cliente antes de envío, modales asíncronos y peticiones con Fetch API sin recargas completas de pantalla.",
-      "Medidas de seguridad activas: sanitización contra inyecciones SQL, control estricto de sesiones y protección de rutas mediante .htaccess en Apache."
+      "Esquema relacional en MySQL con 9 tablas para clientes, datos fiscales, sesiones, notificaciones e historial.",
+      "Backend modular en PHP con endpoints JSON para consultas y alertas.",
+      "Frontend en Vanilla JS con validación de formularios y peticiones Fetch sin recargas.",
+      "Protección de rutas con .htaccess, consultas preparadas y control de sesiones."
     ],
-    evaluatorNotes: "Acredita capacidad demostrada para interactuar con clientes del mundo real, capturar requerimientos contables/fiscales, estructurar bases de datos relacionales sin inconsistencias y desplegar software estable en un entorno de producción diario."
+    evaluatorNotes: "Desarrollo completo para un cliente real, desde la toma de requerimientos hasta su uso diario en oficina."
   },
   {
     id: "studia",
     title: "StudIA",
-    categoryLabel: "Inteligencia Artificial & EdTech",
+    categoryLabel: "IA & Educación",
     badgeType: "ai",
-    tagline: "Plataforma de estudio asistida por IA con generación estructurada de guías, sesiones de práctica y analítica.",
+    tagline: "Plataforma de apoyo académico con guías y práctica generadas con IA.",
     image: "images/studia.png",
     liveUrl: "https://lemonchiffon-leopard-884511.hostingersite.com",
     githubUrl: null,
-    statusBadge: "Demo Pública en Hostinger",
-    tags: ["PHP POO", "OpenAI API", "MySQL Relacional", "JavaScript ES6+", "Arquitectura Modular"],
+    statusBadge: "Demo Pública",
+    tags: ["PHP POO", "OpenAI API", "MySQL Relacional", "JavaScript ES6+"],
     highlights: [
-      { label: "Capa de IA Desacoplada", desc: "Interfaces (AIProviderInterface) con OpenAIService y estrategias de prompt." },
-      { label: "Base de Datos Completa", desc: "Materias, guías generadas, sesiones interactivas y métricas acumuladas." },
-      { label: "API REST Rigurosa", desc: "Manejo HTTP con JsonResponse, buffers limpios y validación de métodos." }
+      { label: "Capa de IA Modular", desc: "Uso de interfaces (AIProviderInterface) para desacoplar el proveedor de IA." },
+      { label: "Persistencia MySQL", desc: "Almacenamiento de materias, guías, sesiones de práctica y métricas." },
+      { label: "API REST en PHP", desc: "Respuestas JSON consistentes con validación de métodos HTTP." }
     ],
-    challenge: "Los estudiantes enfrentan dificultades para estructurar material de estudio extenso en evaluaciones prácticas que midan con precisión qué temas dominan y en cuáles presentan vacíos conceptuales.",
-    solution: "Se arquitectó una plataforma web en PHP moderno que consume modelos de Inteligencia Artificial para generar guías pedagógicas dinámicas y cuestionarios adaptativos. Las sesiones de práctica registran cada respuesta en base de datos, calculando métricas acumuladas y curvas de retención por materia.",
+    challenge: "Organizar apuntes extensos en guías claras y ejercicios prácticos que permitan medir qué temas requieren más repaso.",
+    solution: "Plataforma web en PHP y MySQL que conecta con la API de OpenAI para crear guías estructuradas y cuestionarios de práctica con seguimiento de progreso.",
     technicalFeatures: [
-      "Desacoplamiento arquitectónico mediante Contracts: AIProviderInterface y PromptStrategyInterface para facilitar la sustitución o extensión de proveedores de IA.",
-      "Capa de transporte HTTP limpia: clase JsonResponse con limpieza de buffers (ob_end_clean), encabezados anti-caché y control de métodos POST estrictos.",
-      "Modelo relacional completo en MySQL: tablas para materias, guías estructuradas, sesiones de práctica, eventos de evaluación y notas personales.",
-      "Interfaz frontend asíncrona que consume la API REST interna y sincroniza el progreso del estudiante en tiempo real."
+      "Contratos en PHP (AIProviderInterface y PromptStrategyInterface) para aislar la lógica de IA.",
+      "Clase JsonResponse con limpieza de buffers y cabeceras anti-caché.",
+      "Esquema MySQL para materias, guías, sesiones, eventos de práctica y notas.",
+      "Interfaz asíncrona en JavaScript para sincronizar avances sin recargar."
     ],
-    evaluatorNotes: "Demuestra comprensión avanzada de principios de ingeniería de software (SOLID, inversión de dependencias), integración robusta de APIs de IA generativa y diseño de APIs REST limpias en PHP."
+    evaluatorNotes: "Ejemplo práctico de integración ordenada con OpenAI y endpoints REST en PHP orientado a objetos."
   },
   {
     id: "organizador-personal",
     title: "Organizador Personal SPA",
     categoryLabel: "Single Page Application",
     badgeType: "tool",
-    tagline: "Aplicación SPA de gestión personal con backend REST en PHP, persistencia MySQL PDO y seguimiento de rachas.",
+    tagline: "Aplicación de productividad en una sola página con tareas, hábitos y Pomodoro.",
     image: "images/planificador.png",
     liveUrl: "https://teal-butterfly-279512.hostingersite.com",
     githubUrl: null,
-    statusBadge: "Demo Pública en Hostinger",
-    tags: ["PHP (PDO)", "JavaScript SPA", "MySQL", "API REST", "Pomodoro Timer"],
+    statusBadge: "Demo Pública",
+    tags: ["PHP (PDO)", "JavaScript SPA", "MySQL", "API REST", "Pomodoro"],
     highlights: [
-      { label: "Arquitectura SPA", desc: "Navegación y persistencia completa sin una sola recarga de página." },
-      { label: "Modelos POO Limpios", desc: "User, Task, Habit, HabitLog y Pomodoro desacoplados en backend." },
-      { label: "Seguridad en Servidor", desc: "Estructura preparada para producción con protección .htaccess en subdirectorios." }
+      { label: "SPA Nativa", desc: "Flujo continuo en JavaScript puro sin recargas entre vistas." },
+      { label: "Modelos Claros", desc: "User, Task, Habit, HabitLog y Pomodoro separados en backend." },
+      { label: "Persistencia PDO", desc: "Consultas preparadas en MySQL y reglas .htaccess en subdirectorios." }
     ],
-    challenge: "Las aplicaciones comerciales de productividad sufren de sobrecarga de funciones (feature creep), lentitud en conexiones inestables y sincronizaciones en la nube que interfieren con la concentración inmediata.",
-    solution: "Se construyó una Single Page Application (SPA) ultra rápida con JavaScript Vanilla en el cliente que interactúa con endpoints REST en PHP puro. Permite organizar tareas por prioridad, mantener rachas diarias de hábitos y ejecutar temporizadores Pomodoro integrados.",
+    challenge: "Contar con una herramienta ligera para organizar tareas diarias, hábitos y tiempos de enfoque sin distracciones ni tiempos de carga lentos.",
+    solution: "Aplicación web de una sola página con frontend en Vanilla JS y backend REST en PHP con PDO para guardar tareas, rachas y sesiones Pomodoro.",
     technicalFeatures: [
-      "Backend REST estructurado con arquitectura MVC ligera: enrutador central, manejo de sesiones y conexión PDO segura en config/database.php.",
-      "Modelos de dominio independientes (User, Task, Habit, HabitLog, Pomodoro) para asegurar código limpio y mantenible.",
-      "Frontend SPA nativo: manipulación dinámica del DOM con JavaScript ES6+, cero recargas y feedback visual instantáneo.",
-      "Reglas de protección .htaccess en cada subdirectorio backend para impedir el acceso directo a scripts y bases de datos sensibles."
+      "Backend REST en PHP con enrutador ligero y conexión segura vía PDO.",
+      "Modelos independientes para usuarios, tareas, hábitos, registros y temporizador.",
+      "Actualización dinámica del DOM en JavaScript ES6+.",
+      "Protección de directorios internos mediante reglas .htaccess."
     ],
-    evaluatorNotes: "Confirma la capacidad de estructurar aplicaciones completas desde cero, aplicando principios de diseño REST, modelado relacional e interfaces SPA nativas de alta velocidad de respuesta."
+    evaluatorNotes: "Aplicación SPA ligera construida desde cero con backend REST y persistencia en MySQL."
   },
   {
     id: "chromind",
     title: "Chromind",
-    categoryLabel: "PWA Canvas & Psicometría • Open Source",
+    categoryLabel: "PWA Canvas",
     badgeType: "data",
-    tagline: "PWA de dibujo infantil con motor de análisis de trazos, mapa espacial 3x3 y radar emocional pentagonal.",
+    tagline: "Aplicación de dibujo en Canvas con análisis de color, matriz 3x3 y gráfico radar.",
     image: "images/chromind.png",
     liveUrl: "https://jesusvilladev.github.io/Chromind.github.io/",
-    githubUrl: "https://github.com/JesusVillaDev/Chromind.github.io",
-    statusBadge: "Open Source en GitHub Pages",
-    tags: ["HTML5 Canvas API", "JavaScript Matemático", "PWA Offline", "GitHub Pages", "Visualización Radar"],
+    githubUrl: null,
+    statusBadge: "Demo Web",
+    tags: ["HTML5 Canvas API", "JavaScript", "PWA Offline", "Visualización Radar"],
     highlights: [
-      { label: "Motor Canvas Nativo", desc: "Dibujo fluido con cálculo de ritmo, velocidad, grosor y cobertura de trazo." },
-      { label: "Radar Pentagonal 5D", desc: "Visualización vectorial de Vitalidad, Calma, Expresividad, Concentración y Afecto." },
-      { label: "Mapa Espacial 3x3", desc: "Cuadrícula matemática que cuantifica la actividad por cuadrantes en el lienzo." }
+      { label: "Lienzo Canvas", desc: "Dibujo fluido con registro de velocidad, ritmo y cobertura de trazo." },
+      { label: "Radar 5D", desc: "Gráfico pentagonal en Canvas sin librerías externas de gráficas." },
+      { label: "Matriz 3x3", desc: "Conteo de actividad por cuadrantes sobre el área de dibujo." }
     ],
-    challenge: "El análisis de dibujos infantiles proporciona información valiosa sobre el estado de ánimo, pero interpretar parámetros como presión, distribución del lienzo y paleta cromática requería observación manual especializada.",
-    solution: "Se creó una PWA interactiva sobre Canvas que permite a niños dibujar libremente y, al finalizar, computa algoritmos matemáticos para desglosar porcentajes de color, velocidad de trazo y concentración espacial, generando reportes visuales accesibles para padres y tutores.",
+    challenge: "Ofrecer una forma visual de resumir distribución espacial, velocidad de trazo y paleta de colores usada en dibujos hechos en pantalla.",
+    solution: "PWA sobre HTML5 Canvas donde los niños dibujan libremente y al terminar se calcula el porcentaje de colores, la matriz 3x3 y un radar visual de 5 dimensiones.",
     technicalFeatures: [
-      "Manipulación avanzada del elemento Canvas en JavaScript para trazo anti-aliased y captura de coordenadas de evento a alta tasa de muestreo.",
-      "Algoritmo de análisis cromático: cálculo de densidad de píxeles para generar barras de desglose porcentual por color usado.",
-      "Matriz espacial 3x3 que cuantifica la actividad en cuadrantes superiores (imaginación), centrales (yo interior) e inferiores.",
-      "Gráfico de radar pentagonal vectorial dibujado dinámicamente sin librerías externas para mapear las 5 dimensiones emocionales.",
-      "Despliegue directo y abierto en GitHub Pages para acceso libre."
+      "Captura de coordenadas y trazos continuos con la API nativa de Canvas.",
+      "Cálculo de densidad de píxeles por color para desglose porcentual.",
+      "División matemática del lienzo en cuadrícula 3x3 para ubicar zonas de mayor trazo.",
+      "Gráfico de radar pentagonal dibujado directamente en Canvas.",
+      "Funcionamiento offline como Progressive Web App."
     ],
-    evaluatorNotes: "Muestra destreza en programación gráfica en el navegador con la Canvas API, matemáticas de coordenadas en 2D y creación de componentes de visualización visual sin bibliotecas pesadas."
+    evaluatorNotes: "Manejo directo de HTML5 Canvas, cálculos 2D y visualización de datos sin dependencias externas."
   },
   {
     id: "git-tracker",
     title: "Git Tracker",
-    categoryLabel: "Herramienta de Ingeniería Dev",
+    categoryLabel: "Herramienta Dev",
     badgeType: "tool",
-    tagline: "Visualizador topológico interactivo para repositorios Git locales con detección en tiempo real y grafo DAG.",
+    tagline: "Visualizador local de repositorios Git con grafo de ramas y commits en tiempo real.",
     image: "images/git-tracker.png",
     liveUrl: null,
     githubUrl: null,
-    statusBadge: "Tool de Desarrollo Local",
-    tags: ["JavaScript Canvas", "Git CLI / Plumbing", "PHP Backend", "Caché JSON SHA", "UI/UX Drag-to-Pan"],
+    statusBadge: "Herramienta Local",
+    tags: ["JavaScript Canvas", "Git CLI", "PHP Backend", "Caché JSON SHA"],
     highlights: [
-      { label: "Tiempo Real", desc: "Detección instantánea de cambios en HEAD sin extensiones ni recargas." },
-      { label: "Latencia Mínima", desc: "Caché inteligente JSON autolimpiable con respuestas en menos de 100ms." },
-      { label: "Multi-Repositorio", desc: "Escaneo dinámico de repositorios Git alojados en el servidor local." }
+      { label: "Tiempo Real", desc: "Detecta cambios en HEAD y actualiza el grafo automáticamente." },
+      { label: "Caché SHA", desc: "Respuestas rápidas (<100ms) invalidando solo cuando hay nuevos commits." },
+      { label: "Multi-Repositorio", desc: "Selector para cambiar entre proyectos locales desde una sola vista." }
     ],
-    challenge: "Analizar el historial de ramas, bifurcaciones y fusiones en repositorios locales mediante la consola puede resultar confuso y poco intuitivo cuando se trabaja en proyectos con múltiples ramas simultáneas.",
-    solution: "Se construyó un explorador topológico autónomo que inspecciona la estructura interna de Git (objetos commit, referencias y HEAD) para renderizar un grafo dirigido acíclico (DAG) interactivo con soporte de arrastre (drag-to-pan) y navegación fluida por trackpad.",
+    challenge: "Revisar bifurcaciones y fusiones de ramas múltiples desde consola puede volverse poco práctico en el día a día.",
+    solution: "Herramienta local que lee los objetos y referencias de Git para dibujar un grafo interactivo (DAG) navegable con desplazamiento por arrastre.",
     technicalFeatures: [
-      "Lectura y parseo de comandos plumbing de Git para reconstruir el historial topológico exacto.",
-      "Sistema de caché por hash SHA en archivos .cache*.json: si se detectan commits nuevos, la caché se invalida y regenera en milisegundos.",
-      "Explorador multi-repositorio: escanea el directorio raíz del servidor local y permite alternar entre proyectos desde un selector unificado.",
-      "Diseño UI/UX sin elementos intrusivos: barras de desplazamiento ocultas, iconografía consistente y sistema de notificaciones toast propio."
+      "Lectura de comandos internos de Git para reconstruir el historial exacto.",
+      "Caché por hash SHA en JSON que se regenera únicamente al detectar cambios.",
+      "Escaneo de repositorios dentro del servidor local.",
+      "Lienzo interactivo en Canvas con drag-to-pan y soporte de trackpad."
     ],
-    evaluatorNotes: "Prueba la pasión por el funcionamiento interno del software: manipulación de grafos topológicos, optimización de lectura de disco mediante caché y creación de herramientas que mejoran el flujo de trabajo del desarrollador."
+    evaluatorNotes: "Herramienta propia orientada a agilizar el trabajo diario con repositorios Git locales."
   },
   {
     id: "servidor-local",
     title: "Servidor Local AirDrop",
-    categoryLabel: "Herramienta de Red Local • PHP & Canvas",
+    categoryLabel: "Red Local Wi-Fi",
     badgeType: "tool",
-    tagline: "Hub de transferencia de archivos inalámbrica de alta velocidad entre móvil y PC en red local con preprocesamiento Canvas.",
+    tagline: "Transferencia rápida de fotos y archivos entre móvil y PC por red Wi-Fi local.",
     image: "images/servidor-local.png",
     liveUrl: null,
     githubUrl: null,
-    statusBadge: "Tool de Red Local Wi-Fi",
-    tags: ["PHP 8", "Vanilla JavaScript", "HTML5 Canvas API", "AJAX / XHR Upload", "Red Local Wi-Fi"],
+    statusBadge: "Red Local Wi-Fi",
+    tags: ["PHP 8", "Vanilla JavaScript", "HTML5 Canvas API", "AJAX / XHR"],
     highlights: [
-      { label: "Transferencia Ultrarrápida", desc: "Envío directo en red local privada sin internet ni servidores externos, completando subidas en menos de 0.2s." },
-      { label: "Compresión Canvas en Cliente", desc: "Reescalado y optimización en el navegador móvil antes del envío para reducir drásticamente el peso de payload." },
-      { label: "Sandbox de Archivos Seguro", desc: "Defensa contra Directory Traversal con validación realpath(), nombrado determinista y navegación de carpetas." }
+      { label: "Envío Rápido", desc: "Transferencia directa en red local privada sin cables ni servicios externos." },
+      { label: "Compresión en Cliente", desc: "Redimensionado y optimización de imágenes con Canvas antes de subirlas." },
+      { label: "Rutas Seguras", desc: "Validación con realpath() para mantener las operaciones dentro de la carpeta raíz." }
     ],
-    challenge: "Transferir fotos, capturas y archivos de prueba entre dispositivos móviles (iOS/Android) y una computadora de desarrollo en red local suele depender de cables, aplicaciones de mensajería que comprimen agresivamente o nubes externas que ralentizan el flujo de trabajo.",
-    solution: "Se concibió y desarrolló un hub de transferencia local ultrarrápido y autónomo estilo AirDrop. Corre en servidor local PHP/WAMP con una interfaz móvil optimizada, pipeline de optimización de imágenes en cliente con Canvas y barra de progreso asíncrona mediante XMLHttpRequest.",
+    challenge: "Pasar fotos o archivos de prueba entre el teléfono y la computadora de trabajo suele requerir cables o aplicaciones externas que reducen la calidad.",
+    solution: "Hub local en PHP y JavaScript con interfaz móvil, preprocesamiento de imagen en Canvas y barra de progreso en tiempo real vía XMLHttpRequest.",
     technicalFeatures: [
-      "Pipeline de optimización gráfica en cliente: redimensión proporcional (máx. 1920px) y compresión JPEG al 85% en memoria vía Canvas toBlob() antes del envío.",
-      "Seguridad de sistema de archivos: validación rigurosa de rutas con realpath() y str_starts_with() para impedir escape del directorio raíz.",
-      "Monitorización de subida en tiempo real: eventos xhr.upload.onprogress calculando porcentaje exacto y velocidad de transferencia.",
-      "Gestor de archivos y subdirectorios: navegación de árbol jerárquico, cálculo dinámico de tamaños, previsualización de medios y borrado seguro por AJAX sin recargas.",
-      "Arquitectura minimalista zero-dependency: un único script PHP/JS que resuelve el caso de uso sin frameworks pesados ni dependencias externas."
+      "Redimensionado proporcional (máx. 1920px) y compresión JPEG vía Canvas toBlob().",
+      "Validación de rutas con realpath() y str_starts_with() contra Directory Traversal.",
+      "Progreso de subida en vivo con eventos xhr.upload.onprogress.",
+      "Navegación por carpetas, vista previa y borrado de archivos por AJAX."
     ],
-    evaluatorNotes: "Acredita capacidad para resolver fricciones reales de productividad con soluciones de software eficientes: dominio de APIs gráficas del navegador (Canvas), manejo seguro de I/O de archivos en backend y diseño web mobile-first."
+    evaluatorNotes: "Utilidad práctica para resolver transferencia de archivos en red local sin dependencias."
   }
 ];
 
@@ -200,41 +199,41 @@ const CREDENTIALS_DATA = [
     issuer: "Wizeline • Google Day",
     year: "Google Day",
     badge: "Taller Técnico",
-    desc: "Capacitación intensiva impartida por ingenieros de Wizeline durante el evento Google Day, abordando fundamentos de Machine Learning, pipelines de datos y modelos predictivos aplicados."
+    desc: "Taller impartido por ingenieros de Wizeline durante Google Day sobre fundamentos de Machine Learning y flujos de datos."
   },
   {
     title: "Cloud Computing",
     issuer: "IBM SkillsBuild",
     year: "2026",
     badge: "IBM Verificado",
-    desc: "Modelos de servicio en la nube (IaaS, PaaS, SaaS), despliegue escalable y arquitecturas seguras."
+    desc: "Modelos de servicio en la nube (IaaS, PaaS, SaaS) y conceptos de despliegue."
   },
   {
     title: "Desarrollo Web",
     issuer: "IBM SkillsBuild",
     year: "2026",
     badge: "IBM Verificado",
-    desc: "Estándares web de la W3C, protocolos HTTP/HTTPS, arquitectura cliente-servidor y frontend interactivo."
+    desc: "Estándares web, HTTP/HTTPS, arquitectura cliente-servidor y desarrollo frontend."
   },
   {
     title: "Control de Versiones con Git",
     issuer: "IBM SkillsBuild",
     year: "2026",
     badge: "IBM Verificado",
-    desc: "Gestión avanzada de ramas, flujos colaborativos GitFlow, rebase y resolución de conflictos."
+    desc: "Manejo de ramas, flujos colaborativos, rebase y resolución de conflictos."
   },
   {
     title: "AWS Cloud Foundations",
     issuer: "Amazon Web Services",
     year: "2026",
     badge: "AWS Verificado",
-    desc: "Fundamentos de infraestructura en la nube AWS: cómputo EC2, almacenamiento S3, redes y seguridad."
+    desc: "Bases de infraestructura en AWS: cómputo, almacenamiento, redes y seguridad."
   },
   {
     title: "Cursos MOOC Especializados 2026",
     issuer: "Tecnológico Nacional de México",
     year: "2026",
     badge: "TecNM Oficial",
-    desc: "Formación académica continua en competencias de ingeniería computacional y desarrollo tecnológico."
+    desc: "Formación continua en competencias de desarrollo e ingeniería computacional."
   }
 ];

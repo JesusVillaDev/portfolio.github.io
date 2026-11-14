@@ -8,14 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initEmailCopy();
   initMobileNavigation();
   initProjectModal();
+  initCertLightbox();
   initScrollReveal();
   initNavbarScrollAndSpy();
   initNavIndicator();
 });
 
-/* ==========================================================================
-   1. INDICADOR DESLIZANTE FLUIDO DE LA NAVBAR FLOTANTE
-   ========================================================================== */
+/* Indicador deslizante de navbar */
 function initNavIndicator() {
   const navMenu = document.querySelector('.nav-menu');
   const indicator = document.getElementById('nav-indicator-pill');
@@ -45,7 +44,7 @@ function initNavIndicator() {
     const target = hoveredLink || getActiveLink();
     navLinks.forEach(link => {
       if (link === target) {
-        link.style.color = '#052432';
+        link.style.color = 'var(--color-navy-deep)';
         link.style.fontWeight = '700';
       } else {
         link.style.color = 'var(--color-sand)';
@@ -97,9 +96,7 @@ function initNavIndicator() {
   };
 }
 
-/* ==========================================================================
-   2. COPIADO DE CORREO DIRECTO CON INTERACCIÓN NATURAL (HOVER + CLICK)
-   ========================================================================== */
+/* Copiado de correo */
 function initEmailCopy() {
   const EMAIL = 'jesusfgv.dev@gmail.com';
   const interactiveChip = document.getElementById('interactive-email');
@@ -184,9 +181,7 @@ function initEmailCopy() {
   }
 }
 
-/* ==========================================================================
-   3. NAVEGACIÓN MÓVIL
-   ========================================================================== */
+/* Navegación móvil */
 function initMobileNavigation() {
   const toggleBtn = document.getElementById('mobile-toggle');
   const drawer = document.getElementById('mobile-drawer');
@@ -215,9 +210,7 @@ function initMobileNavigation() {
   });
 }
 
-/* ==========================================================================
-   4. MODAL DE FICHA TÉCNICA (DEEP DIVE DE CASO DE ESTUDIO)
-   ========================================================================== */
+/* Modal de proyecto */
 function initProjectModal() {
   const modal = document.getElementById('project-modal');
   const modalContent = document.getElementById('modal-content');
@@ -269,13 +262,61 @@ function closeModal(modal) {
   document.body.style.overflow = '';
 }
 
+/* Lightbox de certificados */
+function initCertLightbox() {
+  const certModal = document.getElementById('cert-lightbox');
+  const certImg = document.getElementById('cert-lightbox-img');
+  const certCaption = document.getElementById('cert-lightbox-caption');
+  const closeBtn = document.getElementById('cert-lightbox-close');
+  const interactiveCerts = document.querySelectorAll('.cert-item-interactive');
+
+  if (!certModal || !certImg || !interactiveCerts.length) return;
+
+  function showCert(item) {
+    const imgSrc = item.getAttribute('data-cert-img');
+    const title = item.getAttribute('data-cert-title') || 'Certificado Oficial';
+    if (!imgSrc) return;
+
+    certImg.src = imgSrc;
+    certImg.alt = title;
+    if (certCaption) certCaption.textContent = title;
+    openModal(certModal);
+  }
+
+  interactiveCerts.forEach(item => {
+    item.addEventListener('click', () => showCert(item));
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showCert(item);
+      }
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => closeModal(certModal));
+  }
+
+  certModal.addEventListener('click', (e) => {
+    if (e.target === certModal) {
+      closeModal(certModal);
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && certModal.classList.contains('active')) {
+      closeModal(certModal);
+    }
+  });
+}
+
 function renderProjectModal(project, container) {
   const highlightsHtml = project.highlights && project.highlights.length ? `
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
       ${project.highlights.map(h => `
-        <div style="background: rgba(8, 58, 79, 0.45); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1rem;">
+        <div style="background: rgba(6, 9, 17, 0.52); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1rem;">
           <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--color-gold); text-transform: uppercase; margin-bottom: 0.35rem;">${h.label}</div>
-          <div style="font-family: var(--font-rome); font-size: 0.85rem; color: var(--color-sand); line-height: 1.5; text-align: justify; text-justify: inter-word;">${h.desc}</div>
+          <div style="font-family: var(--font-rome); font-size: 0.85rem; color: var(--color-sand); line-height: 1.5; text-align: left;">${h.desc}</div>
         </div>
       `).join('')}
     </div>
@@ -283,10 +324,10 @@ function renderProjectModal(project, container) {
 
   const featuresHtml = project.technicalFeatures && project.technicalFeatures.length ? `
     <div style="margin-bottom: 1.5rem;">
-      <h4 style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-aqua); margin-bottom: 0.75rem;">Características Técnicas & Arquitectura:</h4>
+      <h4 style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-aqua); margin-bottom: 0.75rem;">Detalles Técnicos:</h4>
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.65rem;">
         ${project.technicalFeatures.map(f => `
-          <li style="display: flex; align-items: flex-start; gap: 0.5rem; font-family: var(--font-rome); font-size: 0.875rem; color: var(--color-sand); line-height: 1.55; text-align: justify; text-justify: inter-word;">
+          <li style="display: flex; align-items: flex-start; gap: 0.5rem; font-family: var(--font-rome); font-size: 0.875rem; color: var(--color-sand); line-height: 1.55; text-align: left;">
             <span style="color: var(--color-gold); font-weight: bold; flex-shrink: 0;">›</span>
             <span>${f}</span>
           </li>
@@ -315,41 +356,41 @@ function renderProjectModal(project, container) {
   }
 
   container.innerHTML = `
-    <!-- Cabecera del Modal (Sin indicación innecesaria de rol) -->
+    <!-- Cabecera del Modal -->
     <div style="margin-bottom: 1.25rem; padding-right: 2rem;">
       <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
         <span class="badge-label ${project.badgeType || 'tool'}" style="margin-bottom: 0;">${project.categoryLabel}</span>
-        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-teal-light);">• ${project.statusBadge}</span>
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-sand-muted);">• ${project.statusBadge}</span>
       </div>
       <h3 id="modal-title" style="font-family: var(--font-barcelona); font-size: 2.15rem; font-weight: 700; color: var(--color-sand); margin-bottom: 0.25rem; line-height: 1.15;">${project.title}</h3>
     </div>
 
-    <!-- Imagen de Demostración a sangre total -->
-    <div style="border-radius: 12px; overflow: hidden; background: #052432; border: 1px solid var(--border-subtle); margin-bottom: 1.5rem;">
+    <!-- Imagen de Demostración -->
+    <div style="border-radius: 12px; overflow: hidden; background: var(--color-navy-deep); border: 1px solid var(--border-subtle); margin-bottom: 1.5rem;">
       <img src="${project.image}" alt="${project.title}" style="width: 100%; max-height: 380px; object-fit: cover; object-position: top; display: block;">
     </div>
 
     <!-- Highlights -->
     ${highlightsHtml}
 
-    <!-- Reto / Problema -->
+    <!-- Contexto -->
     <div style="margin-bottom: 1.25rem;">
-      <h4 style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-teal-light); margin-bottom: 0.35rem;">El Desafío / Problema:</h4>
-      <p style="font-family: var(--font-rome); font-size: 0.925rem; color: var(--color-sand); line-height: 1.6; text-align: justify; text-justify: inter-word;">${project.challenge}</p>
+      <h4 style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-aqua); margin-bottom: 0.35rem;">Contexto:</h4>
+      <p style="font-family: var(--font-rome); font-size: 0.925rem; color: var(--color-sand); line-height: 1.6; text-align: left;">${project.challenge}</p>
     </div>
 
     <!-- Solución -->
     <div style="margin-bottom: 1.25rem;">
-      <h4 style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-teal-light); margin-bottom: 0.35rem;">Solución de Ingeniería:</h4>
-      <p style="font-family: var(--font-rome); font-size: 0.925rem; color: var(--color-sand); line-height: 1.6; text-align: justify; text-justify: inter-word;">${project.solution}</p>
+      <h4 style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-aqua); margin-bottom: 0.35rem;">Solución:</h4>
+      <p style="font-family: var(--font-rome); font-size: 0.925rem; color: var(--color-sand); line-height: 1.6; text-align: left;">${project.solution}</p>
     </div>
 
-    <!-- Características Técnicas -->
+    <!-- Detalles Técnicos -->
     ${featuresHtml}
 
-    <!-- Nota para el Evaluador -->
+    <!-- Resumen clave -->
     <div class="evaluator-box" style="margin-bottom: 1.5rem;">
-      <div class="evaluator-label">Impacto para el evaluador:</div>
+      <div class="evaluator-label">Resumen clave:</div>
       <p class="evaluator-text">${project.evaluatorNotes}</p>
     </div>
 
@@ -369,9 +410,7 @@ function renderProjectModal(project, container) {
   `;
 }
 
-/* ==========================================================================
-   5. ANIMACIONES DE ENTRADA (SCROLL REVEAL FLUIDO)
-   ========================================================================== */
+/* Animaciones de scroll */
 function initScrollReveal() {
   const elements = document.querySelectorAll('.reveal-on-scroll');
   if (!elements.length) return;
@@ -396,9 +435,7 @@ function initScrollReveal() {
   elements.forEach(el => observer.observe(el));
 }
 
-/* ==========================================================================
-   6. NAVBAR SCROLL EFFECT & SCROLLSPY ACTIVO
-   ========================================================================== */
+/* Scrollspy de navbar */
 function initNavbarScrollAndSpy() {
   const navbar = document.getElementById('navbar');
   const sections = document.querySelectorAll('section[id]');

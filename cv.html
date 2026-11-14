@@ -1,0 +1,1127 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      CV | Jesús Francisco Gutiérrez Villa | Desarrollador de Software
+    </title>
+    <meta
+      name="description"
+      content="Currículum Vitae de Jesús Francisco Gutiérrez Villa. Desarrollador de Software con PHP, JavaScript, MySQL y Flutter."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --screen-bg: #0b0f19;
+        --screen-bar: #111827;
+        --screen-border: rgba(148, 163, 184, 0.2);
+        --accent-sky: #38bdf8;
+        --accent-print: #0284c7;
+        --ink-primary: #0f172a;
+        --ink-secondary: #334155;
+        --ink-muted: #64748b;
+        --paper-bg: #ffffff;
+        --paper-subtle: #f8fafc;
+        --paper-border: #e2e8f0;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background-color: var(--screen-bg);
+        color: var(--ink-primary);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        padding: 0 1rem 3rem;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* Barra de acciones superior (solo pantalla) */
+      .action-bar {
+        max-width: 850px;
+        margin: 1.25rem auto;
+        padding: 0.85rem 1.25rem;
+        background: var(--screen-bar);
+        border: 1px solid var(--screen-border);
+        border-radius: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+
+      .action-bar-note {
+        font-size: 0.85rem;
+        color: #cbd5e1;
+      }
+
+      .action-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+      }
+
+      .btn-ui {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.55rem 1rem;
+        border-radius: 9px;
+        font-family: inherit;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition:
+          transform 0.15s ease,
+          background 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      .btn-ui-back {
+        background: rgba(51, 65, 85, 0.45);
+        border-color: rgba(148, 163, 184, 0.28);
+        color: #f8fafc;
+      }
+
+      .btn-ui-back:hover {
+        background: rgba(56, 189, 248, 0.14);
+        border-color: #7dd3fc;
+      }
+
+      .btn-ui-print {
+        background: var(--accent-sky);
+        color: #060911;
+      }
+
+      .btn-ui-print:hover {
+        background: #7dd3fc;
+        transform: translateY(-1px);
+      }
+
+      /* Hoja del CV */
+      .cv-sheet {
+        max-width: 850px;
+        margin: 0 auto;
+        background: var(--paper-bg);
+        border-radius: 12px;
+        padding: 2.5rem 2.75rem;
+        box-shadow: 0 25px 60px -15px rgba(2, 6, 23, 0.75);
+      }
+
+      /* Encabezado */
+      .cv-header {
+        border-bottom: 2px solid var(--ink-primary);
+        padding-bottom: 1.15rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .cv-name {
+        font-size: 1.95rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--ink-primary);
+        line-height: 1.15;
+      }
+
+      .cv-role {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--accent-print);
+        margin-top: 0.25rem;
+      }
+
+      .cv-contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        margin-top: 0.85rem;
+      }
+
+      .cv-contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.45rem 1.4rem;
+        font-size: 0.85rem;
+        color: var(--ink-secondary);
+      }
+
+      .cv-contact-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+
+      .cv-contact-item i {
+        color: var(--accent-print);
+        font-size: 0.85rem;
+        width: 14px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+
+      .cv-contact-item a:hover {
+        color: var(--accent-print);
+        text-decoration: underline;
+      }
+
+      /* Secciones */
+      .cv-section {
+        margin-bottom: 1.25rem;
+      }
+
+      .cv-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .cv-section-title {
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent-print);
+        border-bottom: 1px solid var(--paper-border);
+        padding-bottom: 0.28rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .cv-summary {
+        font-size: 0.91rem;
+        color: var(--ink-secondary);
+        line-height: 1.55;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+
+      /* Entradas de Experiencia / Proyectos */
+      .cv-entry {
+        margin-bottom: 0.95rem;
+        break-inside: avoid;
+      }
+
+      .cv-entry:last-child {
+        margin-bottom: 0;
+      }
+
+      .cv-entry-head {
+        display: flex;
+        align-items: baseline;
+        gap: 0.55rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.15rem;
+      }
+
+      .cv-entry-title {
+        font-size: 0.96rem;
+        font-weight: 700;
+        color: var(--ink-primary);
+        line-height: 1.3;
+      }
+
+      .cv-entry-subtitle {
+        font-weight: 600;
+        color: var(--ink-secondary);
+      }
+
+      .cv-entry-role {
+        font-size: 0.84rem;
+        font-weight: 600;
+        color: var(--ink-secondary);
+      }
+
+      .cv-entry-meta {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.74rem;
+        color: var(--ink-muted);
+      }
+
+      .cv-entry-link {
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.74rem;
+        color: var(--accent-print);
+        margin-top: 0.12rem;
+        margin-bottom: 0.25rem;
+        word-break: break-all;
+      }
+
+      .cv-entry-link:hover {
+        text-decoration: underline;
+      }
+
+      .cv-bullets {
+        margin-top: 0.35rem;
+        padding-left: 1.15rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.22rem;
+      }
+
+      .cv-bullets li {
+        font-size: 0.87rem;
+        color: var(--ink-secondary);
+        line-height: 1.48;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+
+      /* Proyectos compactos */
+      .cv-project-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+      }
+
+      .cv-project-item {
+        break-inside: avoid;
+      }
+
+      .cv-project-title {
+        font-size: 0.9rem;
+        color: var(--ink-primary);
+        display: flex;
+        align-items: baseline;
+        gap: 0.45rem;
+        flex-wrap: wrap;
+      }
+
+      .cv-project-desc {
+        font-size: 0.865rem;
+        color: var(--ink-secondary);
+        line-height: 1.48;
+        text-align: justify;
+        text-justify: inter-word;
+        margin-top: 0.15rem;
+      }
+
+      .cv-project-line {
+        font-size: 0.875rem;
+        color: var(--ink-secondary);
+        line-height: 1.48;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+
+      .cv-project-line strong {
+        color: var(--ink-primary);
+      }
+
+      .cv-project-stack {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.74rem;
+        color: var(--ink-muted);
+        font-weight: 500;
+      }
+
+      /* Habilidades */
+      .cv-skills-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.45rem 1.5rem;
+      }
+
+      .cv-skill-row {
+        font-size: 0.87rem;
+        color: var(--ink-secondary);
+        line-height: 1.48;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+
+      .cv-skill-row strong {
+        color: var(--ink-primary);
+      }
+
+      /* Educación & Certificaciones */
+      .cv-two-col {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 680px) {
+        .cv-two-col {
+          grid-template-columns: 1fr 1.25fr;
+        }
+      }
+
+      .cv-edu-item {
+        margin-bottom: 0.65rem;
+        break-inside: avoid;
+      }
+
+      .cv-edu-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .cv-edu-header {
+        display: flex;
+        align-items: baseline;
+        gap: 0.45rem;
+        flex-wrap: wrap;
+      }
+
+      .cv-edu-title {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--ink-primary);
+      }
+
+      .cv-edu-status {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--accent-print);
+      }
+
+      .cv-edu-inst {
+        font-size: 0.84rem;
+        color: var(--ink-secondary);
+        margin-top: 0.08rem;
+      }
+
+      .cv-cert-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+      }
+
+      /* Certificaciones Interactivas en CV */
+      .cv-cert-item {
+        position: relative;
+        break-inside: avoid;
+      }
+
+      .cv-cert-interactive {
+        cursor: pointer;
+      }
+
+      .cv-cert-title {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--ink-primary);
+        line-height: 1.35;
+      }
+
+      .cv-cert-issuer {
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-top: 0.12rem;
+        line-height: 1.35;
+      }
+
+      .cv-cert-badge-hint {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.64rem;
+        font-weight: 600;
+        color: var(--accent-print);
+        background: rgba(8, 145, 178, 0.08);
+        border: 1px solid rgba(8, 145, 178, 0.25);
+        padding: 0.04rem 0.38rem;
+        border-radius: 9999px;
+        transition: all 0.18s ease;
+      }
+
+      .cv-cert-interactive:hover .cv-cert-badge-hint {
+        background: var(--accent-print);
+        color: #ffffff;
+      }
+
+      .cv-cert-popover {
+        position: absolute;
+        bottom: calc(100% + 8px);
+        right: 0;
+        width: min(320px, 85vw);
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        padding: 6px;
+        box-shadow:
+          0 14px 35px rgba(15, 23, 42, 0.3),
+          0 0 15px rgba(8, 145, 178, 0.15);
+        opacity: 0;
+        transform: translateY(8px) scale(0.96);
+        pointer-events: none;
+        transition:
+          opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 100;
+      }
+
+      .cv-cert-popover img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+        background: #0f172a;
+      }
+
+      .cv-cert-popover-note {
+        display: block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.65rem;
+        color: var(--accent-print);
+        text-align: center;
+        padding-top: 4px;
+      }
+
+      .cv-cert-interactive:hover .cv-cert-popover {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      /* Lightbox en cv.html */
+      .cv-lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 200;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.22s ease;
+        padding: 1.5rem;
+      }
+
+      .cv-lightbox.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .cv-lightbox-content {
+        position: relative;
+        max-width: 860px;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 1rem;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .cv-lightbox-content img {
+        width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+
+      .cv-lightbox-caption {
+        font-family: "Roboto Slab", serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+      }
+
+      .cv-lightbox-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #cbd5e1;
+        background: #f8fafc;
+        color: #334155;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+
+      .cv-lightbox-close:hover {
+        background: #0f172a;
+        color: #ffffff;
+      }
+
+      @media (max-width: 640px) {
+        .cv-sheet {
+          padding: 1.5rem 1.25rem;
+        }
+        .cv-name {
+          font-size: 1.55rem;
+        }
+      }
+
+      /* Reglas estrictas de impresión a PDF */
+      @page {
+        size: letter;
+        margin: 12mm 14mm;
+      }
+
+      @media print {
+        body {
+          background: #ffffff !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+        .action-bar {
+          display: none !important;
+        }
+        .cv-sheet {
+          max-width: none !important;
+          width: 100% !important;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+        .cv-two-col {
+          grid-template-columns: 1fr 1.25fr !important;
+        }
+        a {
+          color: inherit !important;
+          text-decoration: none !important;
+        }
+        .cv-cert-popover,
+        .cv-cert-badge-hint,
+        .cv-lightbox {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="action-bar" role="region" aria-label="Acciones del currículum">
+      <div class="action-bar-note">
+        Formato listo para imprimir o exportar como PDF (Ctrl + P → Guardar como
+        PDF).
+      </div>
+      <div class="action-buttons">
+        <button
+          type="button"
+          class="btn-ui btn-ui-print"
+          onclick="window.print()"
+        >
+          <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
+          <span>Guardar como PDF / Imprimir</span>
+        </button>
+      </div>
+    </div>
+
+    <main class="cv-sheet">
+      <!-- Encabezado -->
+      <header class="cv-header">
+        <h1 class="cv-name">Jesús Francisco Gutiérrez Villa</h1>
+        <div class="cv-role">Desarrollador de Software</div>
+        <div class="cv-contact-list">
+          <div class="cv-contact-row">
+            <span class="cv-contact-item">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <span>Apatzingán, Michoacán (Remoto / Híbrido)</span>
+            </span>
+            <span class="cv-contact-item">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:jesusfgv.dev@gmail.com">jesusfgv.dev@gmail.com</a>
+            </span>
+            <span class="cv-contact-item">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <a
+                href="https://wa.me/524531110929"
+                target="_blank"
+                rel="noopener noreferrer"
+                >+52 453 111 0929</a
+              >
+            </span>
+          </div>
+          <div class="cv-contact-row">
+            <span class="cv-contact-item">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              <a
+                href="https://www.linkedin.com/in/jesusvilladev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >linkedin.com/in/jesusvilladev</a
+              >
+            </span>
+            <span class="cv-contact-item">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+              <a
+                href="https://github.com/JesusVillaDev"
+                target="_blank"
+                rel="noopener noreferrer"
+                >github.com/JesusVillaDev</a
+              >
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Experiencia & Sistemas en Producción -->
+      <section class="cv-section">
+        <h2 class="cv-section-title">Experiencia & Sistemas en Producción</h2>
+
+        <article class="cv-entry">
+          <div class="cv-entry-head">
+            <span class="cv-entry-title">EnfocaKids</span>
+            <span class="cv-entry-role">
+              Desarrollador Full Stack (Proyecto Propio) • Producción Activa
+            </span>
+          </div>
+          <a
+            href="https://enfocakids.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cv-entry-link"
+            >https://enfocakids.com</a
+          >
+          <p class="cv-project-desc">
+            Plataforma web orientada a acompañar y potenciar el desarrollo
+            cognitivo en niñas y niños de 4 a 14+ años mediante actividades
+            interactivas y retos de juego. Permite a los alumnos ejercitar
+            habilidades clave como atención, memoria y agilidad mental en un
+            entorno divertido y libre de estrés, ofreciendo a docentes y
+            familias un seguimiento claro de su avance para apoyar su
+            aprendizaje y reconocer sus fortalezas.
+          </p>
+        </article>
+
+        <article class="cv-entry">
+          <div class="cv-entry-head">
+            <span class="cv-entry-title">MACH Contadores</span>
+            <span class="cv-entry-role">
+              Desarrollador de Software • Cliente Comercial en Producción
+            </span>
+          </div>
+          <div
+            class="cv-entry-meta"
+            style="margin-top: 0.12rem; margin-bottom: 0.25rem"
+          >
+            Apatzingán, Michoacán
+          </div>
+          <p class="cv-project-desc">
+            Sistema de gestión diseñado para centralizar y ordenar la
+            administración de un despacho contable. Permite al equipo organizar
+            los expedientes de sus contribuyentes, dar seguimiento a fechas
+            límite de declaraciones fiscales, consultar cédulas de facturación y
+            registrar movimientos en una sola plataforma, reemplazando el uso de
+            hojas de cálculo dispersas.
+          </p>
+        </article>
+      </section>
+
+      <!-- Proyectos Técnicos -->
+      <section class="cv-section">
+        <h2 class="cv-section-title">Proyectos Técnicos</h2>
+        <div class="cv-project-list">
+          <div class="cv-project-item">
+            <div class="cv-project-title">
+              <strong>StudIA</strong>
+              <span class="cv-project-stack">(PHP, OpenAI, MySQL, JavaScript)</span>
+            </div>
+            <a
+              href="https://lemonchiffon-leopard-884511.hostingersite.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cv-entry-link"
+              >https://lemonchiffon-leopard-884511.hostingersite.com</a
+            >
+            <p class="cv-project-desc">
+              Plataforma de apoyo académico creada para ayudar a estudiantes a
+              repasar y consolidar sus materias de forma interactiva. Permite
+              transformar notas y temarios en guías de estudio estructuradas y
+              sesiones de práctica con preguntas generadas de manera
+              inteligente, evaluando el desempeño del alumno para identificar
+              qué conceptos domina y cuáles requieren refuerzo antes de un
+              examen.
+            </p>
+          </div>
+
+          <div class="cv-project-item">
+            <div class="cv-project-title">
+              <strong>Organizador Personal</strong>
+              <span class="cv-project-stack">(PHP, JavaScript, MySQL)</span>
+            </div>
+            <a
+              href="https://teal-butterfly-279512.hostingersite.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cv-entry-link"
+              >https://teal-butterfly-279512.hostingersite.com</a
+            >
+            <p class="cv-project-desc">
+              Aplicación de productividad personal diseñada para organizar la
+              rutina diaria en un entorno rápido y sin distracciones. Reúne en
+              un solo espacio la administración de tareas por nivel de
+              prioridad, el seguimiento visual de hábitos mediante rachas
+              continuas y un temporizador de enfoque con técnica Pomodoro,
+              ayudando al usuario a estructurar su jornada y mantener constancia
+              en sus objetivos.
+            </p>
+          </div>
+
+          <div class="cv-project-item">
+            <div class="cv-project-title">
+              <strong>Chromind</strong>
+              <span class="cv-project-stack">(JavaScript, Canvas)</span>
+            </div>
+            <a
+              href="https://jesusvilladev.github.io/Chromind.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cv-entry-link"
+              >https://jesusvilladev.github.io/Chromind.github.io/</a
+            >
+            <p class="cv-project-desc">
+              Aplicación interactiva de dibujo digital que combina la
+              creatividad con el análisis visual sobre el lienzo. Ofrece a los
+              usuarios un espacio libre para ilustrar y pintar, generando al
+              finalizar un desglose de los colores utilizados, la distribución
+              de los trazos a lo largo del espacio y un gráfico de radar que
+              describe el ritmo y estilo de la obra de forma visual y accesible.
+            </p>
+          </div>
+
+          <div class="cv-project-item">
+            <div class="cv-project-title">
+              <strong>Git Tracker</strong>
+              <span class="cv-project-stack">(Git, JavaScript, PHP)</span>
+            </div>
+            <p class="cv-project-desc">
+              Herramienta visual para desarrolladores diseñada para explorar y
+              comprender el historial de proyectos de código en la computadora.
+              Convierte las ramas, fusiones y cambios de múltiples repositorios
+              locales en un mapa interactivo que se actualiza al instante
+              conforme se trabaja, facilitando la navegación por la cronología
+              del desarrollo sin necesidad de consultar comandos complejos en
+              consola.
+            </p>
+          </div>
+
+          <div class="cv-project-item">
+            <div class="cv-project-title">
+              <strong>Servidor Local AirDrop</strong>
+              <span class="cv-project-stack">(PHP, JavaScript, Wi-Fi)</span>
+            </div>
+            <p class="cv-project-desc">
+              Herramienta de transferencia inalámbrica diseñada para enviar
+              fotos, documentos y archivos entre el teléfono y la computadora de
+              forma inmediata. Funciona a través de la red Wi-Fi local sin
+              cables, cuentas en la nube ni aplicaciones de terceros,
+              optimizando automáticamente las imágenes para asegurar una
+              recepción ultrarrápida y privada en cualquier dispositivo
+              conectado.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Habilidades Técnicas -->
+      <section class="cv-section">
+        <h2 class="cv-section-title">Stack Tecnológico & Herramientas</h2>
+        <div class="cv-skills-grid">
+          <div class="cv-skill-row">
+            <strong>Backend & Datos:</strong> PHP, MySQL, MariaDB, APIs REST,
+            Node.js, Python, Java.
+          </div>
+          <div class="cv-skill-row">
+            <strong>Frontend & Móvil:</strong> JavaScript, HTML, CSS, Flutter,
+            React, Canvas API, Adobe Photoshop, Illustrator.
+          </div>
+          <div class="cv-skill-row">
+            <strong>Arquitectura, Calidad & Seguridad:</strong> APIs REST,
+            Postman, PWAs, PHPStan, Burp Suite, OWASP ZAP.
+          </div>
+          <div class="cv-skill-row">
+            <strong>Entorno & Sistemas:</strong> Git, GitHub, Docker, Linux,
+            Apache, WAMP, Windows.
+          </div>
+        </div>
+      </section>
+
+      <!-- Educación & Certificaciones -->
+      <section class="cv-section">
+        <div class="cv-two-col">
+          <div>
+            <h2 class="cv-section-title">Educación</h2>
+            <div class="cv-edu-item">
+              <div class="cv-edu-header">
+                <span class="cv-edu-title">Ingeniería Informática</span>
+                <span class="cv-edu-status">(En curso)</span>
+              </div>
+              <div class="cv-edu-inst">
+                Instituto Tecnológico Superior de Apatzingán
+              </div>
+            </div>
+            <div class="cv-edu-item">
+              <div class="cv-edu-header">
+                <span class="cv-edu-title">Técnico en Informática</span>
+                <span class="cv-edu-status">(Titulado)</span>
+              </div>
+              <div class="cv-edu-inst">Instituto Milenio</div>
+            </div>
+
+            <div style="margin-top: 1.15rem">
+              <h2 class="cv-section-title">Idiomas</h2>
+              <div class="cv-edu-item">
+                <div class="cv-edu-header">
+                  <span class="cv-edu-title">Español</span>
+                  <span class="cv-edu-status">(Nativo)</span>
+                </div>
+              </div>
+              <div class="cv-edu-item">
+                <div class="cv-edu-header">
+                  <span class="cv-edu-title">Inglés</span>
+                  <span class="cv-edu-status">(Técnico / B1)</span>
+                </div>
+                <div class="cv-edu-inst">
+                  Lectura fluida de documentación, APIs y código
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="cv-section-title">Certificaciones & Formación</h2>
+            <ul class="cv-cert-list">
+              <li
+                class="cv-cert-item cv-cert-interactive"
+                data-cert-img="images/certificados/BS-IA.png"
+                data-cert-title="Desarrollo con IA: de 0 a Producción (BIG school)"
+              >
+                <div class="cv-cert-title">
+                  Desarrollo con IA: de 0 a Producción
+                </div>
+                <div class="cv-cert-issuer">
+                  BIG school / MoureDev &amp; Romuald Fons (2026)
+                </div>
+                <div class="cv-cert-popover" aria-hidden="true">
+                  <img
+                    src="images/certificados/BS-IA.png"
+                    alt="Certificado Desarrollo con IA"
+                    loading="lazy"
+                  />
+                  <span class="cv-cert-popover-note">Clic para ampliar</span>
+                </div>
+              </li>
+
+              <li
+                class="cv-cert-item cv-cert-interactive"
+                data-cert-img="images/certificados/AWS-CPE.png"
+                data-cert-title="AWS Cloud Practitioner Essentials (Amazon Web Services)"
+              >
+                <div class="cv-cert-title">
+                  AWS Cloud Practitioner Essentials
+                </div>
+                <div class="cv-cert-issuer">
+                  Amazon Web Services &amp; Impulsando Talento a la Nube
+                </div>
+                <div class="cv-cert-popover" aria-hidden="true">
+                  <img
+                    src="images/certificados/AWS-CPE.png"
+                    alt="Certificado AWS Cloud Practitioner Essentials"
+                    loading="lazy"
+                  />
+                  <span class="cv-cert-popover-note">Clic para ampliar</span>
+                </div>
+              </li>
+
+              <li
+                class="cv-cert-item cv-cert-interactive"
+                data-cert-img="images/certificados/AWS-CSO.png"
+                data-cert-title="Fundamentos de AWS: Cloud, Serverless y Operación (Commit Academy)"
+              >
+                <div class="cv-cert-title">
+                  Fundamentos de AWS: Cloud &amp; Serverless
+                </div>
+                <div class="cv-cert-issuer">Commit Academy (2026)</div>
+                <div class="cv-cert-popover" aria-hidden="true">
+                  <img
+                    src="images/certificados/AWS-CSO.png"
+                    alt="Certificado Fundamentos de AWS"
+                    loading="lazy"
+                  />
+                  <span class="cv-cert-popover-note">Clic para ampliar</span>
+                </div>
+              </li>
+
+              <li
+                class="cv-cert-item cv-cert-interactive"
+                data-cert-img="images/certificados/IBM-CC.png"
+                data-cert-title="¿Qué es Cloud Computing? (IBM SkillsBuild)"
+              >
+                <div class="cv-cert-title">¿Qué es Cloud Computing?</div>
+                <div class="cv-cert-issuer">IBM SkillsBuild (2026)</div>
+                <div class="cv-cert-popover" aria-hidden="true">
+                  <img
+                    src="images/certificados/IBM-CC.png"
+                    alt="Certificado IBM Cloud Computing"
+                    loading="lazy"
+                  />
+                  <span class="cv-cert-popover-note">Clic para ampliar</span>
+                </div>
+              </li>
+
+              <li
+                class="cv-cert-item cv-cert-interactive"
+                data-cert-img="images/certificados/IBM_DSW.png"
+                data-cert-title="Desarrollo de Sitios para la Web (IBM SkillsBuild)"
+              >
+                <div class="cv-cert-title">
+                  Desarrollo de Sitios para la Web
+                </div>
+                <div class="cv-cert-issuer">IBM SkillsBuild (2026)</div>
+                <div class="cv-cert-popover" aria-hidden="true">
+                  <img
+                    src="images/certificados/IBM_DSW.png"
+                    alt="Certificado IBM Desarrollo Web"
+                    loading="lazy"
+                  />
+                  <span class="cv-cert-popover-note">Clic para ampliar</span>
+                </div>
+              </li>
+
+              <li
+                class="cv-cert-item cv-cert-interactive"
+                data-cert-img="images/certificados/IBM-GIT.png"
+                data-cert-title="Control de Versiones con Git (IBM SkillsBuild)"
+              >
+                <div class="cv-cert-title">Control de Versiones con Git</div>
+                <div class="cv-cert-issuer">
+                  IBM SkillsBuild &amp; Simplilearn (2026)
+                </div>
+                <div class="cv-cert-popover" aria-hidden="true">
+                  <img
+                    src="images/certificados/IBM-GIT.png"
+                    alt="Certificado IBM Git"
+                    loading="lazy"
+                  />
+                  <span class="cv-cert-popover-note">Clic para ampliar</span>
+                </div>
+              </li>
+
+              <li
+                class="cv-cert-item cv-cert-interactive"
+                data-cert-img="images/certificados/mooc-ia.png"
+                data-cert-title="Propedéutico de Inteligencia Artificial (TecNM)"
+              >
+                <div class="cv-cert-title">
+                  Propedéutico de Inteligencia Artificial
+                </div>
+                <div class="cv-cert-issuer">
+                  Tecnológico Nacional de México (MOOC 2026)
+                </div>
+                <div class="cv-cert-popover" aria-hidden="true">
+                  <img
+                    src="images/certificados/mooc-ia.png"
+                    alt="Certificado TecNM IA"
+                    loading="lazy"
+                  />
+                  <span class="cv-cert-popover-note">Clic para ampliar</span>
+                </div>
+              </li>
+
+              <li class="cv-cert-item">
+                <div class="cv-cert-title">Fundamentos de Machine Learning</div>
+                <div class="cv-cert-issuer">Wizeline (Google Day)</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Lightbox de Certificados para CV -->
+    <div
+      id="cv-lightbox"
+      class="cv-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Visualizador de certificado"
+    >
+      <div class="cv-lightbox-content">
+        <button
+          id="cv-lightbox-close"
+          class="cv-lightbox-close"
+          aria-label="Cerrar"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="cv-lightbox-img" src="" alt="Certificado" />
+        <div id="cv-lightbox-caption" class="cv-lightbox-caption"></div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const lb = document.getElementById("cv-lightbox");
+        const img = document.getElementById("cv-lightbox-img");
+        const caption = document.getElementById("cv-lightbox-caption");
+        const closeBtn = document.getElementById("cv-lightbox-close");
+        const items = document.querySelectorAll(".cv-cert-interactive");
+
+        if (!lb || !img || !items.length) return;
+
+        function open(item) {
+          const src = item.getAttribute("data-cert-img");
+          const title = item.getAttribute("data-cert-title") || "";
+          if (!src) return;
+          img.src = src;
+          img.alt = title;
+          if (caption) caption.textContent = title;
+          lb.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        function close() {
+          lb.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        items.forEach((el) => {
+          el.addEventListener("click", () => open(el));
+        });
+
+        if (closeBtn) closeBtn.addEventListener("click", close);
+        lb.addEventListener("click", (e) => {
+          if (e.target === lb) close();
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && lb.classList.contains("active")) close();
+        });
+      })();
+    </script>
+  </body>
+</html>
