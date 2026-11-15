@@ -74,26 +74,11 @@ Herramienta de transferencia inalámbrica diseñada para enviar fotos, documento
 
 ## Certificaciones & Formación
 
-- **Desarrollo con IA: de 0 a Producción**  
-  BIG school / MoureDev & Romuald Fons (2026)
-
-- **AWS Cloud Practitioner Essentials**  
-  Amazon Web Services & Impulsando Talento a la Nube
-
-- **Fundamentos de AWS: Cloud, Serverless y Operación**  
-  Commit Academy (2026)
-
-- **¿Qué es Cloud Computing?**  
-  IBM SkillsBuild (2026)
-
-- **Desarrollo de Sitios para la Web**  
-  IBM SkillsBuild (2026)
-
-- **Control de Versiones con Git**  
-  IBM SkillsBuild & Simplilearn (2026)
-
-- **Propedéutico de Inteligencia Artificial**  
-  Tecnológico Nacional de México (MOOC 2026)
-
-- **Fundamentos de Machine Learning**  
-  Wizeline (Google Day)
+- **Desarrollo con IA: de 0 a Producción** · BIG school (2026)
+- **AWS Cloud Practitioner Essentials** · AWS
+- **Fundamentos de AWS: Cloud & Serverless** · Commit Academy (2026)
+- **¿Qué es Cloud Computing?** · IBM SkillsBuild (2026)
+- **Desarrollo de Sitios para la Web** · IBM SkillsBuild (2026)
+- **Control de Versiones con Git** · IBM SkillsBuild (2026)
+- **Propedéutico de Inteligencia Artificial** · TecNM (2026)
+- **Fundamentos de Machine Learning** · Wizeline (Google Day)

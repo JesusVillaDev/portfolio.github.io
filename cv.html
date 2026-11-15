@@ -141,8 +141,8 @@
       /* Encabezado */
       .cv-header {
         border-bottom: 2px solid var(--ink-primary);
-        padding-bottom: 1.15rem;
-        margin-bottom: 1.25rem;
+        padding-bottom: 0.85rem;
+        margin-bottom: 1rem;
       }
 
       .cv-name {
@@ -197,7 +197,7 @@
 
       /* Secciones */
       .cv-section {
-        margin-bottom: 1.25rem;
+        margin-bottom: 0.95rem;
       }
 
       .cv-section:last-child {
@@ -211,8 +211,8 @@
         letter-spacing: 0.08em;
         color: var(--accent-print);
         border-bottom: 1px solid var(--paper-border);
-        padding-bottom: 0.28rem;
-        margin-bottom: 0.75rem;
+        padding-bottom: 0.22rem;
+        margin-bottom: 0.55rem;
       }
 
       .cv-summary {
@@ -225,7 +225,7 @@
 
       /* Entradas de Experiencia / Proyectos */
       .cv-entry {
-        margin-bottom: 0.95rem;
+        margin-bottom: 0.75rem;
         break-inside: avoid;
       }
 
@@ -299,7 +299,7 @@
       .cv-project-list {
         display: flex;
         flex-direction: column;
-        gap: 0.65rem;
+        gap: 0.55rem;
       }
 
       .cv-project-item {
@@ -414,13 +414,17 @@
         list-style: none;
         display: flex;
         flex-direction: column;
-        gap: 0.65rem;
+        gap: 0.38rem;
       }
 
       /* Certificaciones Interactivas en CV */
       .cv-cert-item {
         position: relative;
         break-inside: avoid;
+        display: flex;
+        align-items: baseline;
+        gap: 0.35rem;
+        flex-wrap: wrap;
       }
 
       .cv-cert-interactive {
@@ -428,20 +432,16 @@
       }
 
       .cv-cert-title {
-        font-size: 0.88rem;
+        font-size: 0.86rem;
         font-weight: 700;
         color: var(--ink-primary);
-        line-height: 1.35;
+        line-height: 1.3;
       }
 
       .cv-cert-issuer {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         color: var(--ink-secondary);
-        display: flex;
-        align-items: center;
-        gap: 0.45rem;
-        margin-top: 0.12rem;
-        line-height: 1.35;
+        line-height: 1.3;
       }
 
       .cv-cert-badge-hint {
@@ -585,21 +585,37 @@
         }
       }
 
-      /* Reglas estrictas de impresión a PDF */
+      /* Reglas estrictas de impresión a 1 sola página PDF */
       @page {
         size: letter;
-        margin: 12mm 14mm;
+        margin: 9mm 12mm;
       }
 
       @media print {
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box !important;
+        }
+
+        html {
+          font-size: 13.8px !important;
+        }
+
         body {
           background: #ffffff !important;
+          color: var(--ink-secondary) !important;
           padding: 0 !important;
           margin: 0 !important;
+          line-height: 1.45 !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
         }
+
         .action-bar {
           display: none !important;
         }
+
         .cv-sheet {
           max-width: none !important;
           width: 100% !important;
@@ -608,13 +624,171 @@
           padding: 0 !important;
           margin: 0 !important;
         }
-        .cv-two-col {
-          grid-template-columns: 1fr 1.25fr !important;
+
+        /* Encabezado elegante y aireado */
+        .cv-header {
+          padding-bottom: 0.65rem !important;
+          margin-bottom: 0.75rem !important;
+          border-bottom-width: 1.5px !important;
         }
+
+        .cv-name {
+          font-size: 1.8rem !important;
+          line-height: 1.15 !important;
+        }
+
+        .cv-role {
+          font-size: 0.98rem !important;
+          margin-top: 0.15rem !important;
+        }
+
+        .cv-contact-list {
+          margin-top: 0.45rem !important;
+          gap: 0.28rem !important;
+        }
+
+        .cv-contact-row {
+          gap: 0.3rem 1.25rem !important;
+          font-size: 0.81rem !important;
+        }
+
+        .cv-contact-item i {
+          font-size: 0.81rem !important;
+        }
+
+        /* Secciones con holgura */
+        .cv-section {
+          margin-bottom: 0.8rem !important;
+          break-inside: avoid !important;
+        }
+
+        .cv-section:last-child {
+          margin-bottom: 0 !important;
+        }
+
+        .cv-section-title {
+          font-size: 0.8rem !important;
+          padding-bottom: 0.2rem !important;
+          margin-bottom: 0.5rem !important;
+          letter-spacing: 0.07em !important;
+        }
+
+        /* Experiencia y Proyectos */
+        .cv-entry {
+          margin-bottom: 0.65rem !important;
+          break-inside: avoid !important;
+        }
+
+        .cv-entry-head {
+          gap: 0.5rem !important;
+          margin-bottom: 0.12rem !important;
+        }
+
+        .cv-entry-title {
+          font-size: 0.92rem !important;
+        }
+
+        .cv-entry-role {
+          font-size: 0.82rem !important;
+        }
+
+        .cv-entry-link {
+          font-size: 0.74rem !important;
+          margin-top: 0.08rem !important;
+          margin-bottom: 0.18rem !important;
+        }
+
+        .cv-entry-meta {
+          font-size: 0.74rem !important;
+          margin-top: 0.08rem !important;
+          margin-bottom: 0.18rem !important;
+        }
+
+        .cv-project-list {
+          gap: 0.55rem !important;
+        }
+
+        .cv-project-item {
+          break-inside: avoid !important;
+        }
+
+        .cv-project-title {
+          font-size: 0.9rem !important;
+          gap: 0.45rem !important;
+        }
+
+        .cv-project-stack {
+          font-size: 0.74rem !important;
+        }
+
+        .cv-project-desc {
+          font-size: 0.83rem !important;
+          line-height: 1.45 !important;
+          margin-top: 0.14rem !important;
+        }
+
+        /* Stack tecnológico */
+        .cv-skills-grid {
+          gap: 0.28rem !important;
+        }
+
+        .cv-skill-row {
+          font-size: 0.83rem !important;
+          line-height: 1.42 !important;
+        }
+
+        /* Educación, Idiomas y Certificaciones */
+        .cv-two-col {
+          grid-template-columns: 1fr 1.35fr !important;
+          gap: 1.35rem !important;
+        }
+
+        .cv-edu-item {
+          margin-bottom: 0.5rem !important;
+        }
+
+        .cv-edu-title {
+          font-size: 0.86rem !important;
+        }
+
+        .cv-edu-status {
+          font-size: 0.74rem !important;
+        }
+
+        .cv-edu-inst {
+          font-size: 0.8rem !important;
+          margin-top: 0.05rem !important;
+        }
+
+        .cv-cert-list {
+          gap: 0.32rem !important;
+        }
+
+        .cv-cert-item {
+          break-inside: avoid !important;
+          display: flex !important;
+          align-items: baseline !important;
+          gap: 0.35rem !important;
+          flex-wrap: wrap !important;
+        }
+
+        .cv-cert-title {
+          font-size: 0.82rem !important;
+          line-height: 1.25 !important;
+        }
+
+        .cv-cert-issuer {
+          font-size: 0.76rem !important;
+          line-height: 1.25 !important;
+          margin-top: 0 !important;
+        }
+
+        /* Elementos interactivos ocultos en impresión */
         a {
           color: inherit !important;
           text-decoration: none !important;
         }
+
         .cv-cert-popover,
         .cv-cert-badge-hint,
         .cv-lightbox {
@@ -691,7 +865,7 @@
                 href="https://jesusvilladev.github.io/portfolio.github.io/"
                 target="_blank"
                 rel="noopener noreferrer"
-                >jesusvilladev.github.io/portfolio.github.io</a
+                >Proyectos</a
               >
             </span>
           </div>
@@ -901,12 +1075,10 @@
                 data-cert-img="images/certificados/BS-IA.png"
                 data-cert-title="Desarrollo con IA: de 0 a Producción (BIG school)"
               >
-                <div class="cv-cert-title">
-                  Desarrollo con IA: de 0 a Producción
-                </div>
-                <div class="cv-cert-issuer">
-                  BIG school / MoureDev &amp; Romuald Fons (2026)
-                </div>
+                <span class="cv-cert-title"
+                  >Desarrollo con IA: de 0 a Producción</span
+                >
+                <span class="cv-cert-issuer">· BIG school (2026)</span>
                 <div class="cv-cert-popover" aria-hidden="true">
                   <img
                     src="images/certificados/BS-IA.png"
@@ -920,14 +1092,12 @@
               <li
                 class="cv-cert-item cv-cert-interactive"
                 data-cert-img="images/certificados/AWS-CPE.png"
-                data-cert-title="AWS Cloud Practitioner Essentials (Amazon Web Services)"
+                data-cert-title="AWS Cloud Practitioner Essentials"
               >
-                <div class="cv-cert-title">
-                  AWS Cloud Practitioner Essentials
-                </div>
-                <div class="cv-cert-issuer">
-                  Amazon Web Services &amp; Impulsando Talento a la Nube
-                </div>
+                <span class="cv-cert-title"
+                  >AWS Cloud Practitioner Essentials</span
+                >
+                <span class="cv-cert-issuer">· AWS</span>
                 <div class="cv-cert-popover" aria-hidden="true">
                   <img
                     src="images/certificados/AWS-CPE.png"
@@ -941,12 +1111,12 @@
               <li
                 class="cv-cert-item cv-cert-interactive"
                 data-cert-img="images/certificados/AWS-CSO.png"
-                data-cert-title="Fundamentos de AWS: Cloud, Serverless y Operación (Commit Academy)"
+                data-cert-title="Fundamentos de AWS: Cloud & Serverless (Commit Academy)"
               >
-                <div class="cv-cert-title">
-                  Fundamentos de AWS: Cloud &amp; Serverless
-                </div>
-                <div class="cv-cert-issuer">Commit Academy (2026)</div>
+                <span class="cv-cert-title"
+                  >Fundamentos de AWS: Cloud &amp; Serverless</span
+                >
+                <span class="cv-cert-issuer">· Commit Academy (2026)</span>
                 <div class="cv-cert-popover" aria-hidden="true">
                   <img
                     src="images/certificados/AWS-CSO.png"
@@ -962,8 +1132,8 @@
                 data-cert-img="images/certificados/IBM-CC.png"
                 data-cert-title="¿Qué es Cloud Computing? (IBM SkillsBuild)"
               >
-                <div class="cv-cert-title">¿Qué es Cloud Computing?</div>
-                <div class="cv-cert-issuer">IBM SkillsBuild (2026)</div>
+                <span class="cv-cert-title">¿Qué es Cloud Computing?</span>
+                <span class="cv-cert-issuer">· IBM SkillsBuild (2026)</span>
                 <div class="cv-cert-popover" aria-hidden="true">
                   <img
                     src="images/certificados/IBM-CC.png"
@@ -979,10 +1149,10 @@
                 data-cert-img="images/certificados/IBM_DSW.png"
                 data-cert-title="Desarrollo de Sitios para la Web (IBM SkillsBuild)"
               >
-                <div class="cv-cert-title">
-                  Desarrollo de Sitios para la Web
-                </div>
-                <div class="cv-cert-issuer">IBM SkillsBuild (2026)</div>
+                <span class="cv-cert-title"
+                  >Desarrollo de Sitios para la Web</span
+                >
+                <span class="cv-cert-issuer">· IBM SkillsBuild (2026)</span>
                 <div class="cv-cert-popover" aria-hidden="true">
                   <img
                     src="images/certificados/IBM_DSW.png"
@@ -998,10 +1168,8 @@
                 data-cert-img="images/certificados/IBM-GIT.png"
                 data-cert-title="Control de Versiones con Git (IBM SkillsBuild)"
               >
-                <div class="cv-cert-title">Control de Versiones con Git</div>
-                <div class="cv-cert-issuer">
-                  IBM SkillsBuild &amp; Simplilearn (2026)
-                </div>
+                <span class="cv-cert-title">Control de Versiones con Git</span>
+                <span class="cv-cert-issuer">· IBM SkillsBuild (2026)</span>
                 <div class="cv-cert-popover" aria-hidden="true">
                   <img
                     src="images/certificados/IBM-GIT.png"
@@ -1017,12 +1185,10 @@
                 data-cert-img="images/certificados/mooc-ia.png"
                 data-cert-title="Propedéutico de Inteligencia Artificial (TecNM)"
               >
-                <div class="cv-cert-title">
-                  Propedéutico de Inteligencia Artificial
-                </div>
-                <div class="cv-cert-issuer">
-                  Tecnológico Nacional de México (MOOC 2026)
-                </div>
+                <span class="cv-cert-title"
+                  >Propedéutico de Inteligencia Artificial</span
+                >
+                <span class="cv-cert-issuer">· TecNM (2026)</span>
                 <div class="cv-cert-popover" aria-hidden="true">
                   <img
                     src="images/certificados/mooc-ia.png"
@@ -1034,8 +1200,10 @@
               </li>
 
               <li class="cv-cert-item">
-                <div class="cv-cert-title">Fundamentos de Machine Learning</div>
-                <div class="cv-cert-issuer">Wizeline (Google Day)</div>
+                <span class="cv-cert-title"
+                  >Fundamentos de Machine Learning</span
+                >
+                <span class="cv-cert-issuer">· Wizeline (Google Day)</span>
               </li>
             </ul>
           </div>
