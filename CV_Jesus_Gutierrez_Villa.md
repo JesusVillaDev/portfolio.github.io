@@ -3,7 +3,7 @@
 
 Apatzingán, Michoacán, México (Disponible Remoto / Híbrido)  
 Correo: jesusfgv.dev@gmail.com | Tel / WhatsApp: +52 453 111 0929  
-LinkedIn: https://www.linkedin.com/in/jesusvilladev/ | GitHub: https://github.com/JesusVillaDev
+LinkedIn: https://www.linkedin.com/in/jesusvilladev/ | GitHub: https://github.com/JesusVillaDev | Portfolio: https://jesusvilladev.github.io/portfolio.github.io/
 
 ---
 
