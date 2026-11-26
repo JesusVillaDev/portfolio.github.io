@@ -188,12 +188,17 @@ function initMobileNavigation() {
 
   if (!toggleBtn || !drawer) return;
 
-  toggleBtn.addEventListener('click', () => {
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     const isOpen = drawer.classList.contains('open');
     if (isOpen) {
-      drawer.classList.remove('open');
-      drawer.setAttribute('aria-hidden', 'true');
-      toggleBtn.setAttribute('aria-expanded', 'false');
+      closeDrawer();
     } else {
       drawer.classList.add('open');
       drawer.setAttribute('aria-hidden', 'false');
@@ -202,11 +207,19 @@ function initMobileNavigation() {
   });
 
   drawer.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      drawer.setAttribute('aria-hidden', 'true');
-      toggleBtn.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', closeDrawer);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+      closeDrawer();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeDrawer();
+    }
   });
 }
 
@@ -312,7 +325,7 @@ function initCertLightbox() {
 
 function renderProjectModal(project, container) {
   const highlightsHtml = project.highlights && project.highlights.length ? `
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 0.85rem; margin: 1.25rem 0;">
       ${project.highlights.map(h => `
         <div style="background: rgba(6, 9, 17, 0.52); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1rem;">
           <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--color-gold); text-transform: uppercase; margin-bottom: 0.35rem;">${h.label}</div>
@@ -357,17 +370,17 @@ function renderProjectModal(project, container) {
 
   container.innerHTML = `
     <!-- Cabecera del Modal -->
-    <div style="margin-bottom: 1.25rem; padding-right: 2rem;">
-      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <div style="margin-bottom: 1.25rem; padding-right: 2.25rem;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 0.6rem; margin-bottom: 0.5rem;">
         <span class="badge-label ${project.badgeType || 'tool'}" style="margin-bottom: 0;">${project.categoryLabel}</span>
         <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-sand-muted);">• ${project.statusBadge}</span>
       </div>
-      <h3 id="modal-title" style="font-family: var(--font-barcelona); font-size: 2.15rem; font-weight: 700; color: var(--color-sand); margin-bottom: 0.25rem; line-height: 1.15;">${project.title}</h3>
+      <h3 id="modal-title" style="font-family: var(--font-barcelona); font-size: clamp(1.45rem, 5vw, 2.15rem); font-weight: 700; color: var(--color-sand); margin-bottom: 0.25rem; line-height: 1.15;">${project.title}</h3>
     </div>
 
     <!-- Imagen de Demostración -->
-    <div style="border-radius: 12px; overflow: hidden; background: var(--color-navy-deep); border: 1px solid var(--border-subtle); margin-bottom: 1.5rem;">
-      <img src="${project.image}" alt="${project.title}" style="width: 100%; max-height: 380px; object-fit: cover; object-position: top; display: block;">
+    <div style="border-radius: 12px; overflow: hidden; background: var(--color-navy-deep); border: 1px solid var(--border-subtle); margin-bottom: 1.25rem;">
+      <img src="${project.image}" alt="${project.title}" style="width: 100%; max-height: clamp(190px, 42vw, 380px); object-fit: cover; object-position: top; display: block;">
     </div>
 
     <!-- Highlights -->
@@ -400,8 +413,8 @@ function renderProjectModal(project, container) {
     </div>
 
     <!-- Acciones Inferiores -->
-    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--border-subtle);">
-      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">${actionButtonsHtml}</div>
+    <div class="modal-footer-actions">
+      <div class="card-actions">${actionButtonsHtml}</div>
       <a href="mailto:jesusfgv.dev@gmail.com?subject=Consulta sobre proyecto ${encodeURIComponent(project.title)}" class="btn btn-secondary btn-sm">
         <i class="fa-solid fa-envelope" style="font-size: 0.85rem;"></i>
         <span>Preguntar sobre este proyecto</span>
