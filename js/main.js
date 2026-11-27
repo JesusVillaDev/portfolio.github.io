@@ -325,9 +325,9 @@ function initCertLightbox() {
 
 function renderProjectModal(project, container) {
   const highlightsHtml = project.highlights && project.highlights.length ? `
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 0.85rem; margin: 1.25rem 0;">
+    <div class="modal-highlights-grid">
       ${project.highlights.map(h => `
-        <div style="background: rgba(6, 9, 17, 0.52); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1rem;">
+        <div class="modal-highlight-card">
           <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--color-gold); text-transform: uppercase; margin-bottom: 0.35rem;">${h.label}</div>
           <div style="font-family: var(--font-rome); font-size: 0.85rem; color: var(--color-sand); line-height: 1.5; text-align: left;">${h.desc}</div>
         </div>
@@ -349,21 +349,13 @@ function renderProjectModal(project, container) {
     </div>
   ` : '';
 
-  // Acciones en la cabecera/pie del modal con estricta jerarquía de botones
+  // Acciones en el pie del modal
   let actionButtonsHtml = '';
   if (project.liveUrl) {
     actionButtonsHtml += `
       <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
         <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem;"></i>
         <span>${project.id === 'enfocakids' ? 'Visitar Plataforma' : 'Probar Demo'}</span>
-      </a>
-    `;
-  }
-  if (project.githubUrl) {
-    actionButtonsHtml += `
-      <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-        <i class="fa-brands fa-github" style="font-size: 0.9rem;"></i>
-        <span>Código en GitHub</span>
       </a>
     `;
   }
@@ -414,7 +406,7 @@ function renderProjectModal(project, container) {
 
     <!-- Acciones Inferiores -->
     <div class="modal-footer-actions">
-      <div class="card-actions">${actionButtonsHtml}</div>
+      ${actionButtonsHtml ? `<div class="card-actions">${actionButtonsHtml}</div>` : ''}
       <a href="mailto:jesusfgv.dev@gmail.com?subject=Consulta sobre proyecto ${encodeURIComponent(project.title)}" class="btn btn-secondary btn-sm">
         <i class="fa-solid fa-envelope" style="font-size: 0.85rem;"></i>
         <span>Preguntar sobre este proyecto</span>
